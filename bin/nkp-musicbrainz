@@ -1,0 +1,49 @@
+#!/usr/bin/env php
+<?php declare(strict_types=1);
+
+use NkpMusicBrainz\Importer;
+use NkpMusicBrainz\Pairing\Authorities;
+use NkpMusicBrainz\Pairing\Pairer;
+
+$app = require __DIR__ . '/../bootstrap.php';
+
+$arguments = array_slice($argv, 1);
+$options = array_filter($arguments, fn($argument) => str_starts_with($argument, '--'));
+$arguments = array_values(array_diff($arguments, $options));
+$command = array_shift($arguments);
+
+switch ($command) {
+	case 'import':
+		if (count($arguments) !== 2) {
+			exit("Usage: nkp-musicbrainz import <marc21-url> <cache-path> [--refresh]\n");
+		}
+		(new Importer($app))->import($arguments[0], $arguments[1], in_array('--refresh', $options, true));
+		break;
+	case 'authorities':
+		(new Authorities($app))->load();
+		break;
+	case 'pair':
+		(new Pairer($app))->run(in_array('--force', $options, true));
+		break;
+	case 'cookie':
+		if (!preg_match('~^(remember_login|musicbrainz_server_session)=(\S+)$~', $arguments[0] ?? '', $match)) {
+			exit("Usage: nkp-musicbrainz cookie remember_login=<value>  (from the browser after logging in as the bot)\n");
+		}
+		$jar = $app->config['cookie_jar'];
+		@mkdir(dirname($jar), 0700, true);
+		file_put_contents($jar, "# Netscape HTTP Cookie File\n#HttpOnly_musicbrainz.org\tFALSE\t/\tTRUE\t0\t$match[1]\t$match[2]\n");
+		chmod($jar, 0600);
+		echo "Stored $match[1] in $jar\n";
+		break;
+	case 'serve':
+		echo 'php -S 0.0.0.0:8088 -t ' . realpath(__DIR__ . '/../public') . "  # WSL forwards localhost to Windows only from 0.0.0.0\n";
+		break;
+	default:
+		echo "Usage: nkp-musicbrainz <command>\n"
+			. "  import <marc21-url> <cache-path> [--refresh]  load music records, download only if the cache is missing or with --refresh\n"
+			. "  authorities                                   load NK authority -> MusicBrainz artist IDs from Wikidata\n"
+			. "  pair [--force]                                pair records with the MusicBrainz mirror and build proposals\n"
+			. "  cookie remember_login=<value>                 store the bot's login cookie copied from the browser\n"
+			. "  serve                                         print the command starting the review page\n";
+		exit($command === null ? 0 : 1);
+}

@@ -1,0 +1,27 @@
+{
+	"name": "vrana/nkp-musicbrainz",
+	"description": "Review music records of the Czech National Library (MARC21) and submit missing data to MusicBrainz",
+	"type": "project",
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "Jakub Vrána",
+			"email": "jakub@vrana.cz"
+		}
+	],
+	"require": {
+		"php": ">=8.3",
+		"ext-curl": "*",
+		"ext-dom": "*",
+		"ext-intl": "*",
+		"ext-mbstring": "*",
+		"ext-pdo_pgsql": "*",
+		"ext-xmlreader": "*",
+		"ext-zlib": "*"
+	},
+	"autoload": {
+		"psr-4": {
+			"NkpMusicBrainz\\": "src/"
+		}
+	}
+}

@@ -1,0 +1,1253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<collection xmlns="http://www.loc.gov/MARC21/slim">
+<record xmlns="http://www.loc.gov/MARC21/slim" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.loc.gov/MARC21/slim http://www.loc.gov/standards/marcxml/schema/MARC21slim.xsd">
+  <leader>     cjm a22      i 4500</leader>
+  <controlfield tag="001">cpz19980353747</controlfield>
+  <controlfield tag="003">CZ PrNK</controlfield>
+  <controlfield tag="005">20250826085611.0</controlfield>
+  <controlfield tag="007">sd fsngnnmmned</controlfield>
+  <controlfield tag="008">991014p19981997xr munn  fgh      n zxx</controlfield>
+  <datafield tag="015" ind1=" " ind2=" ">
+    <subfield code="a">cnb000353747</subfield>
+  </datafield>
+  <datafield tag="024" ind1="1" ind2=" ">
+    <subfield code="a">099925335526</subfield>
+  </datafield>
+  <datafield tag="028" ind1="0" ind2="1">
+    <subfield code="a">SU 3355-2 131</subfield>
+    <subfield code="b">Supraphon</subfield>
+  </datafield>
+  <datafield tag="040" ind1=" " ind2=" ">
+    <subfield code="a">ABA001</subfield>
+    <subfield code="b">cze</subfield>
+    <subfield code="e">rda</subfield>
+  </datafield>
+  <datafield tag="041" ind1="0" ind2=" ">
+    <subfield code="g">cze</subfield>
+    <subfield code="g">eng</subfield>
+    <subfield code="g">fre</subfield>
+    <subfield code="g">ger</subfield>
+  </datafield>
+  <datafield tag="043" ind1=" " ind2=" ">
+    <subfield code="a">e-gx---</subfield>
+  </datafield>
+  <datafield tag="045" ind1=" " ind2=" ">
+    <subfield code="a">u-v-</subfield>
+  </datafield>
+  <datafield tag="047" ind1=" " ind2=" ">
+    <subfield code="a">ft</subfield>
+    <subfield code="a">fg</subfield>
+    <subfield code="a">tc</subfield>
+    <subfield code="a">pr</subfield>
+    <subfield code="a">vr</subfield>
+    <subfield code="a">zz</subfield>
+  </datafield>
+  <datafield tag="048" ind1=" " ind2=" ">
+    <subfield code="b">kb01</subfield>
+  </datafield>
+  <datafield tag="072" ind1=" " ind2="7">
+    <subfield code="a">786</subfield>
+    <subfield code="x">Hudba pro klávesové nástroje</subfield>
+    <subfield code="2">Konspekt</subfield>
+    <subfield code="9">9</subfield>
+  </datafield>
+  <datafield tag="080" ind1=" " ind2=" ">
+    <subfield code="a">780.8:780.649</subfield>
+    <subfield code="2">MRF</subfield>
+  </datafield>
+  <datafield tag="080" ind1=" " ind2=" ">
+    <subfield code="a">78.083.3</subfield>
+    <subfield code="2">MRF</subfield>
+  </datafield>
+  <datafield tag="080" ind1=" " ind2=" ">
+    <subfield code="a">78.083.2</subfield>
+    <subfield code="2">MRF</subfield>
+  </datafield>
+  <datafield tag="080" ind1=" " ind2=" ">
+    <subfield code="a">78.083.6</subfield>
+    <subfield code="2">MRF</subfield>
+  </datafield>
+  <datafield tag="080" ind1=" " ind2=" ">
+    <subfield code="a">78.083.3</subfield>
+    <subfield code="2">MRF</subfield>
+  </datafield>
+  <datafield tag="080" ind1=" " ind2=" ">
+    <subfield code="a">78.083.2</subfield>
+    <subfield code="2">MRF</subfield>
+  </datafield>
+  <datafield tag="080" ind1=" " ind2=" ">
+    <subfield code="a">781.65</subfield>
+    <subfield code="2">MRF</subfield>
+  </datafield>
+  <datafield tag="080" ind1=" " ind2=" ">
+    <subfield code="a">78.083.2</subfield>
+    <subfield code="2">MRF</subfield>
+  </datafield>
+  <datafield tag="080" ind1=" " ind2=" ">
+    <subfield code="a">78.083.2</subfield>
+    <subfield code="2">MRF</subfield>
+  </datafield>
+  <datafield tag="080" ind1=" " ind2=" ">
+    <subfield code="a">78.083.2</subfield>
+    <subfield code="2">MRF</subfield>
+  </datafield>
+  <datafield tag="080" ind1=" " ind2=" ">
+    <subfield code="a">(086.76)</subfield>
+    <subfield code="2">MRF</subfield>
+  </datafield>
+  <datafield tag="100" ind1="1" ind2=" ">
+    <subfield code="a">Pachelbel, Johann,</subfield>
+    <subfield code="d">1653-1706</subfield>
+    <subfield code="7">jn19990006331</subfield>
+    <subfield code="4">cmp</subfield>
+  </datafield>
+  <datafield tag="245" ind1="1" ind2="0">
+    <subfield code="a">Historic organs of Bohemia.</subfield>
+    <subfield code="n">(IV) /</subfield>
+    <subfield code="c">Johann Pachelbel ; Jaroslav Tůma</subfield>
+  </datafield>
+  <datafield tag="264" ind1=" " ind2="1">
+    <subfield code="a">Praha :</subfield>
+    <subfield code="b">Supraphon,</subfield>
+    <subfield code="c">[1998]</subfield>
+  </datafield>
+  <datafield tag="264" ind1=" " ind2="4">
+    <subfield code="c">℗1998</subfield>
+  </datafield>
+  <datafield tag="300" ind1=" " ind2=" ">
+    <subfield code="a">1 CD audio (70:00) ;</subfield>
+    <subfield code="c">12 cm</subfield>
+  </datafield>
+  <datafield tag="306" ind1=" " ind2=" ">
+    <subfield code="a">011000</subfield>
+  </datafield>
+  <datafield tag="336" ind1=" " ind2=" ">
+    <subfield code="a">hraná hudba</subfield>
+    <subfield code="b">prm</subfield>
+    <subfield code="2">rdacontent</subfield>
+  </datafield>
+  <datafield tag="337" ind1=" " ind2=" ">
+    <subfield code="a">audio</subfield>
+    <subfield code="b">s</subfield>
+    <subfield code="2">rdamedia</subfield>
+  </datafield>
+  <datafield tag="338" ind1=" " ind2=" ">
+    <subfield code="a">audiodisk</subfield>
+    <subfield code="b">sd</subfield>
+    <subfield code="2">rdacarrier</subfield>
+  </datafield>
+  <datafield tag="344" ind1=" " ind2=" ">
+    <subfield code="a">digital</subfield>
+    <subfield code="b">optical</subfield>
+    <subfield code="g">stereo</subfield>
+    <subfield code="2">rda</subfield>
+  </datafield>
+  <datafield tag="347" ind1=" " ind2=" ">
+    <subfield code="a">audio soubor</subfield>
+    <subfield code="b">CD audio</subfield>
+    <subfield code="2">rda</subfield>
+  </datafield>
+  <datafield tag="382" ind1="0" ind2="1">
+    <subfield code="a">varhany</subfield>
+    <subfield code="n">1</subfield>
+    <subfield code="s">1</subfield>
+  </datafield>
+  <datafield tag="500" ind1=" " ind2=" ">
+    <subfield code="a">Název z disku</subfield>
+  </datafield>
+  <datafield tag="500" ind1=" " ind2=" ">
+    <subfield code="a">Technika záznamu DDD</subfield>
+  </datafield>
+  <datafield tag="500" ind1=" " ind2=" ">
+    <subfield code="a">Informace o hudbě, varhanech a interpretovi vícejazyčně (10 stran) vloženy v pouzdru</subfield>
+  </datafield>
+  <datafield tag="505" ind1="0" ind2="0">
+    <subfield code="t">Toccata et Fuga in d</subfield>
+    <subfield code="g">(3:34) --</subfield>
+    <subfield code="t">Fuga in d</subfield>
+    <subfield code="g">(2:41) --</subfield>
+    <subfield code="t">Ciacona in d</subfield>
+    <subfield code="g">(6:16) --</subfield>
+    <subfield code="t">Praeludium in g</subfield>
+    <subfield code="g">(1:43) --</subfield>
+    <subfield code="t">Warum betrübst du dich, mein Herz</subfield>
+    <subfield code="g">(2:33) --</subfield>
+    <subfield code="t">Fuga in g</subfield>
+    <subfield code="g">(2:19) --</subfield>
+    <subfield code="t">Fantasia in a</subfield>
+    <subfield code="g">(1:43) --</subfield>
+    <subfield code="t">Fuga in a</subfield>
+    <subfield code="g">(1:55) --</subfield>
+    <subfield code="t">Toccata in e</subfield>
+    <subfield code="g">(2:14) --</subfield>
+    <subfield code="t">Magnificat-Fuga I</subfield>
+    <subfield code="g">(1:37) --</subfield>
+    <subfield code="t">Magnificat-Fuga II</subfield>
+    <subfield code="g">(1:13) --</subfield>
+    <subfield code="t">Magnificat-Fuga III</subfield>
+    <subfield code="g">(1:12) --</subfield>
+    <subfield code="t">Toccata in C</subfield>
+    <subfield code="g">(2:09) --</subfield>
+    <subfield code="t">Ricercar in C</subfield>
+    <subfield code="g">(4:36) --</subfield>
+    <subfield code="t">Fuga in C I</subfield>
+    <subfield code="g">(2:29) --</subfield>
+    <subfield code="t">Fuga in C II</subfield>
+    <subfield code="g">(0:33) --</subfield>
+    <subfield code="t">Toccata in F</subfield>
+    <subfield code="g">(2:48) --</subfield>
+    <subfield code="t">Ciacona in f</subfield>
+    <subfield code="g">(10:09) --</subfield>
+    <subfield code="t">Praeludium in G</subfield>
+    <subfield code="g">(1:05) --</subfield>
+    <subfield code="t">Werde munter, mein Gemüte :</subfield>
+    <subfield code="g">three chorale variations (7:15) --</subfield>
+    <subfield code="t">Praeludium et Fuga in c</subfield>
+    <subfield code="g">(4:44) --</subfield>
+    <subfield code="t">Toccata in D</subfield>
+    <subfield code="g">(1:22) --</subfield>
+    <subfield code="t">Kanon in D</subfield>
+    <subfield code="g">(2:44)</subfield>
+  </datafield>
+  <datafield tag="518" ind1=" " ind2=" ">
+    <subfield code="o">Nahráno</subfield>
+    <subfield code="d">18.-20. listopadu 1997</subfield>
+    <subfield code="p">klášterní kostel, Kladruby u Stříbra</subfield>
+  </datafield>
+  <datafield tag="648" ind1=" " ind2="7">
+    <subfield code="a">17.-18. století</subfield>
+    <subfield code="7">ch757024</subfield>
+    <subfield code="2">czenas</subfield>
+  </datafield>
+  <datafield tag="650" ind1="0" ind2="7">
+    <subfield code="a">hudba pro varhany</subfield>
+    <subfield code="7">ph120888</subfield>
+    <subfield code="z">Německo</subfield>
+    <subfield code="y">17.-18. století</subfield>
+    <subfield code="2">czenas</subfield>
+  </datafield>
+  <datafield tag="650" ind1="0" ind2="9">
+    <subfield code="a">organ music</subfield>
+    <subfield code="z">Germany</subfield>
+    <subfield code="y">17th-18th centuries</subfield>
+    <subfield code="2">eczenas</subfield>
+  </datafield>
+  <datafield tag="655" ind1=" " ind2="7">
+    <subfield code="a">fantazie (hudba)</subfield>
+    <subfield code="7">fd980122</subfield>
+    <subfield code="2">czenas</subfield>
+  </datafield>
+  <datafield tag="655" ind1=" " ind2="7">
+    <subfield code="a">kánony</subfield>
+    <subfield code="7">fd1027113</subfield>
+    <subfield code="2">czenas</subfield>
+  </datafield>
+  <datafield tag="655" ind1=" " ind2="7">
+    <subfield code="a">hudební improvizace</subfield>
+    <subfield code="7">fd1145130</subfield>
+    <subfield code="2">czenas</subfield>
+  </datafield>
+  <datafield tag="655" ind1=" " ind2="7">
+    <subfield code="a">toccaty</subfield>
+    <subfield code="7">fd989714</subfield>
+    <subfield code="2">czenas</subfield>
+  </datafield>
+  <datafield tag="655" ind1=" " ind2="7">
+    <subfield code="a">fugy</subfield>
+    <subfield code="7">fd989711</subfield>
+    <subfield code="2">czenas</subfield>
+  </datafield>
+  <datafield tag="655" ind1=" " ind2="7">
+    <subfield code="a">chaconny</subfield>
+    <subfield code="7">fd993107</subfield>
+    <subfield code="2">czenas</subfield>
+  </datafield>
+  <datafield tag="655" ind1=" " ind2="7">
+    <subfield code="a">preludia</subfield>
+    <subfield code="7">fd989710</subfield>
+    <subfield code="2">czenas</subfield>
+  </datafield>
+  <datafield tag="655" ind1=" " ind2="7">
+    <subfield code="a">ricercary</subfield>
+    <subfield code="7">fd1027137</subfield>
+    <subfield code="2">czenas</subfield>
+  </datafield>
+  <datafield tag="655" ind1=" " ind2="7">
+    <subfield code="a">variace (hudba)</subfield>
+    <subfield code="7">fd993494</subfield>
+    <subfield code="2">czenas</subfield>
+  </datafield>
+  <datafield tag="655" ind1=" " ind2="7">
+    <subfield code="a">kompaktní disky</subfield>
+    <subfield code="7">fd201991</subfield>
+    <subfield code="2">czenas</subfield>
+  </datafield>
+  <datafield tag="655" ind1=" " ind2="9">
+    <subfield code="a">fantasy (music)</subfield>
+    <subfield code="2">eczenas</subfield>
+  </datafield>
+  <datafield tag="655" ind1=" " ind2="9">
+    <subfield code="a">canons (music)</subfield>
+    <subfield code="2">eczenas</subfield>
+  </datafield>
+  <datafield tag="655" ind1=" " ind2="9">
+    <subfield code="a">improvisation (music)</subfield>
+    <subfield code="2">eczenas</subfield>
+  </datafield>
+  <datafield tag="655" ind1=" " ind2="9">
+    <subfield code="a">toccatas</subfield>
+    <subfield code="2">eczenas</subfield>
+  </datafield>
+  <datafield tag="655" ind1=" " ind2="9">
+    <subfield code="a">fugues</subfield>
+    <subfield code="2">eczenas</subfield>
+  </datafield>
+  <datafield tag="655" ind1=" " ind2="9">
+    <subfield code="a">chaconnes</subfield>
+    <subfield code="2">eczenas</subfield>
+  </datafield>
+  <datafield tag="655" ind1=" " ind2="9">
+    <subfield code="a">preludes</subfield>
+    <subfield code="2">eczenas</subfield>
+  </datafield>
+  <datafield tag="655" ind1=" " ind2="9">
+    <subfield code="a">ricercares</subfield>
+    <subfield code="2">eczenas</subfield>
+  </datafield>
+  <datafield tag="655" ind1=" " ind2="9">
+    <subfield code="a">variations (music)</subfield>
+    <subfield code="2">eczenas</subfield>
+  </datafield>
+  <datafield tag="655" ind1=" " ind2="9">
+    <subfield code="a">compact discs</subfield>
+    <subfield code="2">eczenas</subfield>
+  </datafield>
+  <datafield tag="700" ind1="1" ind2=" ">
+    <subfield code="a">Tůma, Jaroslav,</subfield>
+    <subfield code="d">1956-</subfield>
+    <subfield code="7">jn19981002265</subfield>
+    <subfield code="4">itr</subfield>
+  </datafield>
+  <datafield tag="998" ind1=" " ind2=" ">
+    <subfield code="a">http://aleph.nkp.cz/F/?func=direct&amp;doc_number=000353747&amp;local_base=CNB</subfield>
+  </datafield>
+</record>
+<record xmlns="http://www.loc.gov/MARC21/slim" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.loc.gov/MARC21/slim http://www.loc.gov/standards/marcxml/schema/MARC21slim.xsd">
+  <leader>     njm a22      i 4500</leader>
+  <controlfield tag="001">cpz20152766157</controlfield>
+  <controlfield tag="003">CZ PrNK</controlfield>
+  <controlfield tag="005">20161011132628.0</controlfield>
+  <controlfield tag="007">sd fungnnmmned</controlfield>
+  <controlfield tag="008">151217t20152015xr ppnng d        n cze</controlfield>
+  <datafield tag="015" ind1=" " ind2=" ">
+    <subfield code="a">cnb002766157</subfield>
+  </datafield>
+  <datafield tag="024" ind1="1" ind2=" ">
+    <subfield code="a">099925630027</subfield>
+  </datafield>
+  <datafield tag="028" ind1="0" ind2="1">
+    <subfield code="a">SU 6300-2</subfield>
+    <subfield code="b">Supraphon</subfield>
+  </datafield>
+  <datafield tag="040" ind1=" " ind2=" ">
+    <subfield code="a">ABA001</subfield>
+    <subfield code="b">cze</subfield>
+    <subfield code="e">rda</subfield>
+  </datafield>
+  <datafield tag="045" ind1=" " ind2=" ">
+    <subfield code="a">y1y1</subfield>
+  </datafield>
+  <datafield tag="072" ind1=" " ind2="7">
+    <subfield code="a">78.011.26</subfield>
+    <subfield code="x">Populární hudba. Populární písně. Populární taneční hudba</subfield>
+    <subfield code="2">Konspekt</subfield>
+    <subfield code="9">9</subfield>
+  </datafield>
+  <datafield tag="080" ind1=" " ind2=" ">
+    <subfield code="a">784.4.011.26</subfield>
+    <subfield code="2">MRF</subfield>
+  </datafield>
+  <datafield tag="080" ind1=" " ind2=" ">
+    <subfield code="a">78.03.011.26</subfield>
+    <subfield code="2">MRF</subfield>
+  </datafield>
+  <datafield tag="080" ind1=" " ind2=" ">
+    <subfield code="a">(086.76)</subfield>
+    <subfield code="2">MRF</subfield>
+  </datafield>
+  <datafield tag="245" ind1="0" ind2="0">
+    <subfield code="a">Barbora Poláková</subfield>
+  </datafield>
+  <datafield tag="264" ind1=" " ind2="1">
+    <subfield code="a">Praha :</subfield>
+    <subfield code="b">Supraphon,</subfield>
+    <subfield code="c">2015</subfield>
+  </datafield>
+  <datafield tag="264" ind1=" " ind2="4">
+    <subfield code="c">℗2015</subfield>
+  </datafield>
+  <datafield tag="300" ind1=" " ind2=" ">
+    <subfield code="a">1 CD audio ;</subfield>
+    <subfield code="c">12 cm</subfield>
+  </datafield>
+  <datafield tag="336" ind1=" " ind2=" ">
+    <subfield code="a">hraná hudba</subfield>
+    <subfield code="b">prm</subfield>
+    <subfield code="2">rdacontent</subfield>
+  </datafield>
+  <datafield tag="337" ind1=" " ind2=" ">
+    <subfield code="a">audio</subfield>
+    <subfield code="b">s</subfield>
+    <subfield code="2">rdamedia</subfield>
+  </datafield>
+  <datafield tag="338" ind1=" " ind2=" ">
+    <subfield code="a">audiodisk</subfield>
+    <subfield code="b">sd</subfield>
+    <subfield code="2">rdacarrier</subfield>
+  </datafield>
+  <datafield tag="344" ind1=" " ind2=" ">
+    <subfield code="a">digital</subfield>
+    <subfield code="b">optical</subfield>
+    <subfield code="2">rda</subfield>
+  </datafield>
+  <datafield tag="347" ind1=" " ind2=" ">
+    <subfield code="a">audio soubor</subfield>
+    <subfield code="b">CD audio</subfield>
+    <subfield code="2">rda</subfield>
+  </datafield>
+  <datafield tag="500" ind1=" " ind2=" ">
+    <subfield code="a">Název z disku</subfield>
+  </datafield>
+  <datafield tag="500" ind1=" " ind2=" ">
+    <subfield code="a">Hudba, texty (v pouzdře) Barbora Poláková a další</subfield>
+  </datafield>
+  <datafield tag="505" ind1="0" ind2="0">
+    <subfield code="t">Generace --</subfield>
+    <subfield code="t">Nafrněná --</subfield>
+    <subfield code="t">Ona --</subfield>
+    <subfield code="t">Krosna --</subfield>
+    <subfield code="t">Milo --</subfield>
+    <subfield code="t">Ráda --</subfield>
+    <subfield code="t">Ego --</subfield>
+    <subfield code="t">Kdo je tady víc --</subfield>
+    <subfield code="t">Hlava --</subfield>
+    <subfield code="t">Kráva</subfield>
+  </datafield>
+  <datafield tag="511" ind1="1" ind2=" ">
+    <subfield code="a">Barbora Poláková (zpěv) a různí instrumentalisté</subfield>
+  </datafield>
+  <datafield tag="648" ind1=" " ind2="7">
+    <subfield code="a">2011-2020</subfield>
+    <subfield code="7">ch460589</subfield>
+    <subfield code="2">czenas</subfield>
+  </datafield>
+  <datafield tag="650" ind1="0" ind2="7">
+    <subfield code="a">populární písně</subfield>
+    <subfield code="7">ph124354</subfield>
+    <subfield code="y">2011-2020</subfield>
+    <subfield code="2">czenas</subfield>
+  </datafield>
+  <datafield tag="655" ind1=" " ind2="7">
+    <subfield code="a">populární hudba</subfield>
+    <subfield code="7">fd992599</subfield>
+    <subfield code="2">czenas</subfield>
+  </datafield>
+  <datafield tag="655" ind1=" " ind2="7">
+    <subfield code="a">písně</subfield>
+    <subfield code="7">fd133162</subfield>
+    <subfield code="2">czenas</subfield>
+  </datafield>
+  <datafield tag="655" ind1=" " ind2="7">
+    <subfield code="a">kompaktní disky</subfield>
+    <subfield code="7">fd201991</subfield>
+    <subfield code="2">czenas</subfield>
+  </datafield>
+  <datafield tag="700" ind1="1" ind2=" ">
+    <subfield code="a">Poláková, Barbora,</subfield>
+    <subfield code="d">1983-</subfield>
+    <subfield code="7">xx0161947</subfield>
+    <subfield code="4">cmp</subfield>
+    <subfield code="4">lyr</subfield>
+    <subfield code="4">sng</subfield>
+  </datafield>
+  <datafield tag="998" ind1=" " ind2=" ">
+    <subfield code="a">http://aleph.nkp.cz/F/?func=direct&amp;doc_number=002766157&amp;local_base=CNB</subfield>
+  </datafield>
+</record>
+<record xmlns="http://www.loc.gov/MARC21/slim" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.loc.gov/MARC21/slim http://www.loc.gov/standards/marcxml/schema/MARC21slim.xsd">
+  <leader>     njm a22      i 4500</leader>
+  <controlfield tag="001">cpz20162785621</controlfield>
+  <controlfield tag="003">CZ PrNK</controlfield>
+  <controlfield tag="005">20250926174032.0</controlfield>
+  <controlfield tag="007">sd fsngnnmmnee</controlfield>
+  <controlfield tag="008">160321p19891975xr conng h        n zxx</controlfield>
+  <datafield tag="015" ind1=" " ind2=" ">
+    <subfield code="a">cnb002785621</subfield>
+  </datafield>
+  <datafield tag="024" ind1="3" ind2=" ">
+    <subfield code="a">8596911028124</subfield>
+  </datafield>
+  <datafield tag="028" ind1="0" ind2="1">
+    <subfield code="a">11 0281-2011</subfield>
+    <subfield code="b">Supraphon</subfield>
+  </datafield>
+  <datafield tag="040" ind1=" " ind2=" ">
+    <subfield code="a">ABA001</subfield>
+    <subfield code="b">cze</subfield>
+    <subfield code="e">rda</subfield>
+  </datafield>
+  <datafield tag="041" ind1="0" ind2=" ">
+    <subfield code="g">cze</subfield>
+    <subfield code="g">eng</subfield>
+    <subfield code="g">fre</subfield>
+    <subfield code="g">ger</subfield>
+  </datafield>
+  <datafield tag="043" ind1=" " ind2=" ">
+    <subfield code="a">e-it---</subfield>
+    <subfield code="a">e-gx---</subfield>
+  </datafield>
+  <datafield tag="045" ind1=" " ind2=" ">
+    <subfield code="a">u-v-</subfield>
+  </datafield>
+  <datafield tag="048" ind1=" " ind2=" ">
+    <subfield code="b">sa01</subfield>
+    <subfield code="a">kc01</subfield>
+    <subfield code="a">ob01</subfield>
+  </datafield>
+  <datafield tag="048" ind1=" " ind2=" ">
+    <subfield code="b">sa02</subfield>
+    <subfield code="a">ob01</subfield>
+  </datafield>
+  <datafield tag="072" ind1=" " ind2="7">
+    <subfield code="a">787</subfield>
+    <subfield code="x">Hudba pro strunné a smyčcové nástroje</subfield>
+    <subfield code="2">Konspekt</subfield>
+    <subfield code="9">9</subfield>
+  </datafield>
+  <datafield tag="080" ind1=" " ind2=" ">
+    <subfield code="a">78.082.4</subfield>
+    <subfield code="2">MRF</subfield>
+  </datafield>
+  <datafield tag="080" ind1=" " ind2=" ">
+    <subfield code="a">(086.76)</subfield>
+    <subfield code="2">MRF</subfield>
+  </datafield>
+  <datafield tag="245" ind1="0" ind2="4">
+    <subfield code="a">The four seasons /</subfield>
+    <subfield code="c">Vivaldi</subfield>
+  </datafield>
+  <datafield tag="264" ind1=" " ind2="1">
+    <subfield code="a">[Praha] :</subfield>
+    <subfield code="b">Supraphon,</subfield>
+    <subfield code="c">[1989]</subfield>
+  </datafield>
+  <datafield tag="264" ind1=" " ind2="4">
+    <subfield code="c">℗1989</subfield>
+  </datafield>
+  <datafield tag="300" ind1=" " ind2=" ">
+    <subfield code="a">1 CD audio (58:01) ;</subfield>
+    <subfield code="c">12 cm</subfield>
+  </datafield>
+  <datafield tag="306" ind1=" " ind2=" ">
+    <subfield code="a">005801</subfield>
+  </datafield>
+  <datafield tag="336" ind1=" " ind2=" ">
+    <subfield code="a">hraná hudba</subfield>
+    <subfield code="b">prm</subfield>
+    <subfield code="2">rdacontent</subfield>
+  </datafield>
+  <datafield tag="337" ind1=" " ind2=" ">
+    <subfield code="a">audio</subfield>
+    <subfield code="b">s</subfield>
+    <subfield code="2">rdamedia</subfield>
+  </datafield>
+  <datafield tag="338" ind1=" " ind2=" ">
+    <subfield code="a">audiodisk</subfield>
+    <subfield code="b">sd</subfield>
+    <subfield code="2">rdacarrier</subfield>
+  </datafield>
+  <datafield tag="344" ind1=" " ind2=" ">
+    <subfield code="a">digital</subfield>
+    <subfield code="b">optical</subfield>
+    <subfield code="g">stereo</subfield>
+    <subfield code="2">rda</subfield>
+  </datafield>
+  <datafield tag="347" ind1=" " ind2=" ">
+    <subfield code="a">audio soubor</subfield>
+    <subfield code="b">CD audio</subfield>
+    <subfield code="2">rda</subfield>
+  </datafield>
+  <datafield tag="382" ind1="0" ind2="1">
+    <subfield code="a">housle</subfield>
+    <subfield code="n">1</subfield>
+    <subfield code="a">cembalo</subfield>
+    <subfield code="n">1</subfield>
+    <subfield code="a">komorní orchestr</subfield>
+  </datafield>
+  <datafield tag="382" ind1="0" ind2="1">
+    <subfield code="b">housle</subfield>
+    <subfield code="n">2</subfield>
+    <subfield code="a">komorní orchestr</subfield>
+  </datafield>
+  <datafield tag="500" ind1=" " ind2=" ">
+    <subfield code="a">Název z pozdra</subfield>
+  </datafield>
+  <datafield tag="500" ind1=" " ind2=" ">
+    <subfield code="a">Technika záznamu AAD</subfield>
+  </datafield>
+  <datafield tag="500" ind1=" " ind2=" ">
+    <subfield code="a">Informace o hudbě vícejazyčně (6 stran) v pouzdře</subfield>
+  </datafield>
+  <datafield tag="505" ind1="0" ind2=" ">
+    <subfield code="a">Čtvero ročních dob = Le quattro stagioni : čtyři koncerty pro housle a smyčcový orchestr, op. 8, č. 1-4 / Antonio Vivaldi (41:33) -- Koncert d moll pro dvoje housle a orchestr, BWV 1043 / Johann Sebastian Bach (16:09)</subfield>
+  </datafield>
+  <datafield tag="511" ind1="0" ind2=" ">
+    <subfield code="a">Josef Suk, housle ; František Xaver Thuri, cembalo continuo ; Pražský komorní orchestr, Libor Hlaváček, dirigent (1. dílo) ; Josef Suk, Miroslav Kosina, housle ; Sukův komorní orchestr, Josef Vlach, dirigent (2. dílo)</subfield>
+  </datafield>
+  <datafield tag="518" ind1=" " ind2=" ">
+    <subfield code="a">Nahráno 13.-16. dubna 1975 (1. dílo) a 14.-17. října 1982 (2. dílo), Dvořákova síň Pražského domu umělců</subfield>
+  </datafield>
+  <datafield tag="648" ind1=" " ind2="7">
+    <subfield code="a">17.-18. století</subfield>
+    <subfield code="7">ch757024</subfield>
+    <subfield code="2">czenas</subfield>
+  </datafield>
+  <datafield tag="650" ind1="0" ind2="7">
+    <subfield code="a">koncerty</subfield>
+    <subfield code="7">ph121790</subfield>
+    <subfield code="z">Itálie</subfield>
+    <subfield code="y">17.-18. století</subfield>
+    <subfield code="2">czenas</subfield>
+  </datafield>
+  <datafield tag="650" ind1="0" ind2="7">
+    <subfield code="a">koncerty</subfield>
+    <subfield code="7">ph121790</subfield>
+    <subfield code="z">Německo</subfield>
+    <subfield code="y">17.-18. století</subfield>
+    <subfield code="2">czenas</subfield>
+  </datafield>
+  <datafield tag="655" ind1=" " ind2="7">
+    <subfield code="a">koncerty</subfield>
+    <subfield code="7">fd980071</subfield>
+    <subfield code="2">czenas</subfield>
+  </datafield>
+  <datafield tag="655" ind1=" " ind2="7">
+    <subfield code="a">kompaktní disky</subfield>
+    <subfield code="7">fd201991</subfield>
+    <subfield code="2">czenas</subfield>
+  </datafield>
+  <datafield tag="700" ind1="1" ind2=" ">
+    <subfield code="a">Suk, Josef,</subfield>
+    <subfield code="d">1929-2011</subfield>
+    <subfield code="7">jo20000076838</subfield>
+    <subfield code="4">itr</subfield>
+  </datafield>
+  <datafield tag="700" ind1="1" ind2=" ">
+    <subfield code="a">Kosina, Miroslav</subfield>
+    <subfield code="4">itr</subfield>
+  </datafield>
+  <datafield tag="700" ind1="1" ind2=" ">
+    <subfield code="a">Thuri, František Xaver,</subfield>
+    <subfield code="d">1939-2019</subfield>
+    <subfield code="7">jn20000402351</subfield>
+    <subfield code="4">itr</subfield>
+  </datafield>
+  <datafield tag="700" ind1="1" ind2=" ">
+    <subfield code="a">Hlaváček, Libor,</subfield>
+    <subfield code="d">1926-1990</subfield>
+    <subfield code="7">jn20000400965</subfield>
+    <subfield code="4">cnd</subfield>
+  </datafield>
+  <datafield tag="700" ind1="1" ind2=" ">
+    <subfield code="a">Vlach, Josef,</subfield>
+    <subfield code="d">1923-1988</subfield>
+    <subfield code="7">jo20000075504</subfield>
+    <subfield code="4">cnd</subfield>
+  </datafield>
+  <datafield tag="700" ind1="1" ind2="2">
+    <subfield code="a">Vivaldi, Antonio,</subfield>
+    <subfield code="d">1678-1741.</subfield>
+    <subfield code="t">Cimento dell'armonia e dell'inventione.</subfield>
+    <subfield code="n">Č. 1-4</subfield>
+    <subfield code="7">aun2008476731</subfield>
+  </datafield>
+  <datafield tag="700" ind1="1" ind2="2">
+    <subfield code="a">Bach, Johann Sebastian,</subfield>
+    <subfield code="d">1685-1750.</subfield>
+    <subfield code="t">Koncerty,</subfield>
+    <subfield code="m">housle (2), smyčcový orchestr,</subfield>
+    <subfield code="n">BWV 1043,</subfield>
+    <subfield code="r">d moll</subfield>
+    <subfield code="7">aun2008476726</subfield>
+  </datafield>
+  <datafield tag="710" ind1="2" ind2=" ">
+    <subfield code="a">Pražský komorní orchestr</subfield>
+    <subfield code="7">kn20010710282</subfield>
+    <subfield code="4">itr</subfield>
+  </datafield>
+  <datafield tag="710" ind1="2" ind2=" ">
+    <subfield code="a">Sukův komorní orchestr</subfield>
+    <subfield code="7">kn20010710317</subfield>
+    <subfield code="4">itr</subfield>
+  </datafield>
+  <datafield tag="925" ind1=" " ind2=" ">
+    <subfield code="a">housle, cembalo, komorní orchestr</subfield>
+    <subfield code="b">Vl, Cemb, orch cam</subfield>
+  </datafield>
+  <datafield tag="925" ind1=" " ind2=" ">
+    <subfield code="a">housle (2); komorní orchestr</subfield>
+    <subfield code="b">Vl (2); orch cam</subfield>
+  </datafield>
+  <datafield tag="926" ind1=" " ind2=" ">
+    <subfield code="b">op. 8</subfield>
+  </datafield>
+  <datafield tag="926" ind1=" " ind2=" ">
+    <subfield code="a">BWV 1043 (Schmieder)</subfield>
+  </datafield>
+  <datafield tag="998" ind1=" " ind2=" ">
+    <subfield code="a">http://aleph.nkp.cz/F/?func=direct&amp;doc_number=002785621&amp;local_base=CNB</subfield>
+  </datafield>
+</record>
+<record xmlns="http://www.loc.gov/MARC21/slim" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.loc.gov/MARC21/slim http://www.loc.gov/standards/marcxml/schema/MARC21slim.xsd">
+  <leader>     njm a22      i 4500</leader>
+  <controlfield tag="001">cpz20193069690</controlfield>
+  <controlfield tag="003">CZ PrNK</controlfield>
+  <controlfield tag="005">20190115143800.0</controlfield>
+  <controlfield tag="007">sd fungnnmmned</controlfield>
+  <controlfield tag="008">190108s2018    xr munng d        n cze</controlfield>
+  <datafield tag="015" ind1=" " ind2=" ">
+    <subfield code="a">cnb003069690</subfield>
+  </datafield>
+  <datafield tag="024" ind1="3" ind2=" ">
+    <subfield code="a">8595082724279</subfield>
+  </datafield>
+  <datafield tag="028" ind1="0" ind2="1">
+    <subfield code="a">AV 042718 - 2</subfield>
+    <subfield code="b">Avik</subfield>
+  </datafield>
+  <datafield tag="040" ind1=" " ind2=" ">
+    <subfield code="a">ABA001</subfield>
+    <subfield code="b">cze</subfield>
+    <subfield code="e">rda</subfield>
+  </datafield>
+  <datafield tag="041" ind1="0" ind2=" ">
+    <subfield code="d">cze</subfield>
+    <subfield code="e">cze</subfield>
+  </datafield>
+  <datafield tag="045" ind1=" " ind2=" ">
+    <subfield code="a">y1y1</subfield>
+  </datafield>
+  <datafield tag="047" ind1=" " ind2=" ">
+    <subfield code="a">pp</subfield>
+    <subfield code="a">rc</subfield>
+  </datafield>
+  <datafield tag="072" ind1=" " ind2="7">
+    <subfield code="a">78.011.26</subfield>
+    <subfield code="x">Populární hudba. Populární písně. Populární taneční hudba</subfield>
+    <subfield code="2">Konspekt</subfield>
+    <subfield code="9">9</subfield>
+  </datafield>
+  <datafield tag="080" ind1=" " ind2=" ">
+    <subfield code="a">78.036.011.26</subfield>
+    <subfield code="2">MRF</subfield>
+  </datafield>
+  <datafield tag="080" ind1=" " ind2=" ">
+    <subfield code="a">78.03.011.26</subfield>
+    <subfield code="2">MRF</subfield>
+  </datafield>
+  <datafield tag="080" ind1=" " ind2=" ">
+    <subfield code="a">(086.76)</subfield>
+    <subfield code="2">MRF</subfield>
+  </datafield>
+  <datafield tag="245" ind1="0" ind2="0">
+    <subfield code="a">Divadlo den /</subfield>
+    <subfield code="c">Ultramarin</subfield>
+  </datafield>
+  <datafield tag="264" ind1=" " ind2="1">
+    <subfield code="a">Plzeň :</subfield>
+    <subfield code="b">Avik,</subfield>
+    <subfield code="c">[2018]</subfield>
+  </datafield>
+  <datafield tag="300" ind1=" " ind2=" ">
+    <subfield code="a">1 CD audio (41:58) ;</subfield>
+    <subfield code="c">12 cm</subfield>
+  </datafield>
+  <datafield tag="306" ind1=" " ind2=" ">
+    <subfield code="a">004158</subfield>
+  </datafield>
+  <datafield tag="336" ind1=" " ind2=" ">
+    <subfield code="a">hraná hudba</subfield>
+    <subfield code="b">prm</subfield>
+    <subfield code="2">rdacontent</subfield>
+  </datafield>
+  <datafield tag="337" ind1=" " ind2=" ">
+    <subfield code="a">audio</subfield>
+    <subfield code="b">s</subfield>
+    <subfield code="2">rdamedia</subfield>
+  </datafield>
+  <datafield tag="338" ind1=" " ind2=" ">
+    <subfield code="a">audiodisk</subfield>
+    <subfield code="b">sd</subfield>
+    <subfield code="2">rdacarrier</subfield>
+  </datafield>
+  <datafield tag="344" ind1=" " ind2=" ">
+    <subfield code="a">digital</subfield>
+    <subfield code="b">optical</subfield>
+    <subfield code="2">rda</subfield>
+  </datafield>
+  <datafield tag="347" ind1=" " ind2=" ">
+    <subfield code="a">audio soubor</subfield>
+    <subfield code="b">CD audio</subfield>
+    <subfield code="2">rda</subfield>
+  </datafield>
+  <datafield tag="500" ind1=" " ind2=" ">
+    <subfield code="a">Název z disku</subfield>
+  </datafield>
+  <datafield tag="500" ind1=" " ind2=" ">
+    <subfield code="a">Texty většinou Jiří Toužimský</subfield>
+  </datafield>
+  <datafield tag="500" ind1=" " ind2=" ">
+    <subfield code="a">Texty písní v pouzdře</subfield>
+  </datafield>
+  <datafield tag="505" ind1="0" ind2="0">
+    <subfield code="g">Divadlo den --</subfield>
+    <subfield code="t">Vzpomínky --</subfield>
+    <subfield code="t">Naruby --</subfield>
+    <subfield code="t">Hra s ozvěnou --</subfield>
+    <subfield code="t">Za krokem žen --</subfield>
+    <subfield code="t">Nejsem tvůj Zetor --</subfield>
+    <subfield code="t">Tvůj barevný svět --</subfield>
+    <subfield code="t">Madam Nostalgie --</subfield>
+    <subfield code="t">Půl snů vzdát --</subfield>
+    <subfield code="t">Válka barev --</subfield>
+    <subfield code="t">Váhy</subfield>
+  </datafield>
+  <datafield tag="511" ind1="1" ind2=" ">
+    <subfield code="a">Ultramarin</subfield>
+  </datafield>
+  <datafield tag="518" ind1=" " ind2=" ">
+    <subfield code="o">Nahráno</subfield>
+    <subfield code="d">jaro 2018</subfield>
+    <subfield code="p">studio ExAvik, Klatovy</subfield>
+  </datafield>
+  <datafield tag="648" ind1=" " ind2="7">
+    <subfield code="a">2011-2020</subfield>
+    <subfield code="7">ch460589</subfield>
+    <subfield code="2">czenas</subfield>
+  </datafield>
+  <datafield tag="650" ind1="0" ind2="7">
+    <subfield code="a">rock</subfield>
+    <subfield code="7">ph125174</subfield>
+    <subfield code="2">czenas</subfield>
+  </datafield>
+  <datafield tag="650" ind1="0" ind2="7">
+    <subfield code="a">populární hudba</subfield>
+    <subfield code="7">ph124352</subfield>
+    <subfield code="y">2011-2020</subfield>
+    <subfield code="2">czenas</subfield>
+  </datafield>
+  <datafield tag="655" ind1=" " ind2="7">
+    <subfield code="a">rock</subfield>
+    <subfield code="7">fd992602</subfield>
+    <subfield code="2">czenas</subfield>
+  </datafield>
+  <datafield tag="655" ind1=" " ind2="7">
+    <subfield code="a">populární hudba</subfield>
+    <subfield code="7">fd992599</subfield>
+    <subfield code="2">czenas</subfield>
+  </datafield>
+  <datafield tag="655" ind1=" " ind2="7">
+    <subfield code="a">kompaktní disky</subfield>
+    <subfield code="7">fd201991</subfield>
+    <subfield code="2">czenas</subfield>
+  </datafield>
+  <datafield tag="700" ind1="1" ind2=" ">
+    <subfield code="a">Toužimský, Jiří</subfield>
+    <subfield code="4">itr</subfield>
+    <subfield code="4">lyr</subfield>
+    <subfield code="4">sng</subfield>
+  </datafield>
+  <datafield tag="710" ind1="2" ind2=" ">
+    <subfield code="a">Ultramarin (hudební skupina)</subfield>
+    <subfield code="7">pna2009514520</subfield>
+    <subfield code="4">prf</subfield>
+  </datafield>
+  <datafield tag="998" ind1=" " ind2=" ">
+    <subfield code="a">http://aleph.nkp.cz/F/?func=direct&amp;doc_number=003069690&amp;local_base=CNB</subfield>
+  </datafield>
+</record>
+<record xmlns="http://www.loc.gov/MARC21/slim" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.loc.gov/MARC21/slim http://www.loc.gov/standards/marcxml/schema/MARC21slim.xsd">
+  <leader>     njm a22      i 4500</leader>
+  <controlfield tag="001">cpz20253732492</controlfield>
+  <controlfield tag="003">CZ PrNK</controlfield>
+  <controlfield tag="005">20260126113256.0</controlfield>
+  <controlfield tag="007">sd bumennmpuud</controlfield>
+  <controlfield tag="008">260126t20252025xr ppnng d        n cze</controlfield>
+  <datafield tag="015" ind1=" " ind2=" ">
+    <subfield code="a">cnb003732492</subfield>
+  </datafield>
+  <datafield tag="028" ind1="0" ind2="1">
+    <subfield code="a">SU 6977-1</subfield>
+    <subfield code="b">Supraphon</subfield>
+  </datafield>
+  <datafield tag="028" ind1="1" ind2="3">
+    <subfield code="a">308757E1/A</subfield>
+    <subfield code="b">Supraphon</subfield>
+  </datafield>
+  <datafield tag="028" ind1="1" ind2="3">
+    <subfield code="a">308757E2/A</subfield>
+    <subfield code="b">Supraphon</subfield>
+  </datafield>
+  <datafield tag="028" ind1="3" ind2="0">
+    <subfield code="a">E 1585</subfield>
+    <subfield code="b">Supraphon</subfield>
+    <subfield code="q">(etiketa)</subfield>
+  </datafield>
+  <datafield tag="028" ind1="3" ind2="0">
+    <subfield code="a">E 1586</subfield>
+    <subfield code="b">Supraphon</subfield>
+    <subfield code="q">(etiketa)</subfield>
+  </datafield>
+  <datafield tag="040" ind1=" " ind2=" ">
+    <subfield code="a">ABA001</subfield>
+    <subfield code="b">cze</subfield>
+    <subfield code="e">rda</subfield>
+  </datafield>
+  <datafield tag="045" ind1=" " ind2=" ">
+    <subfield code="a">y2y2</subfield>
+  </datafield>
+  <datafield tag="072" ind1=" " ind2="7">
+    <subfield code="a">78.011.26</subfield>
+    <subfield code="x">Populární hudba. Populární písně. Populární taneční hudba</subfield>
+    <subfield code="2">Konspekt</subfield>
+    <subfield code="9">9</subfield>
+  </datafield>
+  <datafield tag="080" ind1=" " ind2=" ">
+    <subfield code="a">78.03.011.26</subfield>
+    <subfield code="2">MRF</subfield>
+  </datafield>
+  <datafield tag="080" ind1=" " ind2=" ">
+    <subfield code="a">78.03.011.26-028.41</subfield>
+    <subfield code="2">MRF</subfield>
+  </datafield>
+  <datafield tag="080" ind1=" " ind2=" ">
+    <subfield code="a">789.983</subfield>
+    <subfield code="2">MRF</subfield>
+  </datafield>
+  <datafield tag="080" ind1=" " ind2=" ">
+    <subfield code="a">(086.72)</subfield>
+    <subfield code="2">MRF</subfield>
+  </datafield>
+  <datafield tag="245" ind1="0" ind2="0">
+    <subfield code="a">Sršeň /</subfield>
+    <subfield code="c">Barbora Poláková, Štěpán Urban</subfield>
+  </datafield>
+  <datafield tag="264" ind1=" " ind2="1">
+    <subfield code="a">Praha :</subfield>
+    <subfield code="b">Supraphon,</subfield>
+    <subfield code="c">2025</subfield>
+  </datafield>
+  <datafield tag="264" ind1=" " ind2="4">
+    <subfield code="c">℗2025</subfield>
+  </datafield>
+  <datafield tag="300" ind1=" " ind2=" ">
+    <subfield code="a">1 gramofonová deska ;</subfield>
+    <subfield code="c">30 cm +</subfield>
+    <subfield code="e">1 brožura (8 stran)</subfield>
+  </datafield>
+  <datafield tag="336" ind1=" " ind2=" ">
+    <subfield code="a">hraná hudba</subfield>
+    <subfield code="b">prm</subfield>
+    <subfield code="2">rdacontent</subfield>
+  </datafield>
+  <datafield tag="336" ind1=" " ind2=" ">
+    <subfield code="a">text</subfield>
+    <subfield code="b">txt</subfield>
+    <subfield code="2">rdacontent</subfield>
+  </datafield>
+  <datafield tag="337" ind1=" " ind2=" ">
+    <subfield code="a">audio</subfield>
+    <subfield code="b">s</subfield>
+    <subfield code="2">rdamedia</subfield>
+  </datafield>
+  <datafield tag="337" ind1=" " ind2=" ">
+    <subfield code="a">bez média</subfield>
+    <subfield code="b">n</subfield>
+    <subfield code="2">rdamedia</subfield>
+  </datafield>
+  <datafield tag="338" ind1=" " ind2=" ">
+    <subfield code="a">audiodisk</subfield>
+    <subfield code="b">sd</subfield>
+    <subfield code="2">rdacarrier</subfield>
+  </datafield>
+  <datafield tag="338" ind1=" " ind2=" ">
+    <subfield code="a">svazek</subfield>
+    <subfield code="b">nc</subfield>
+    <subfield code="2">rdacarrier</subfield>
+  </datafield>
+  <datafield tag="340" ind1=" " ind2=" ">
+    <subfield code="a">vinyl</subfield>
+    <subfield code="2">rda</subfield>
+  </datafield>
+  <datafield tag="344" ind1=" " ind2=" ">
+    <subfield code="a">analog</subfield>
+    <subfield code="c">33 1/3 ot/min</subfield>
+    <subfield code="2">rda</subfield>
+  </datafield>
+  <datafield tag="500" ind1=" " ind2=" ">
+    <subfield code="a">Název z etikety</subfield>
+  </datafield>
+  <datafield tag="500" ind1=" " ind2=" ">
+    <subfield code="a">Hudba a texty většinou Barbora Poláková, Štěpán Urban a Matěj Soukup</subfield>
+  </datafield>
+  <datafield tag="500" ind1=" " ind2=" ">
+    <subfield code="a">Texty písní vložené v pouzdru</subfield>
+  </datafield>
+  <datafield tag="505" ind1="0" ind2="0">
+    <subfield code="t">Sršeň --</subfield>
+    <subfield code="t">Je jedno jaká byla --</subfield>
+    <subfield code="t">Líto --</subfield>
+    <subfield code="t">Drak --</subfield>
+    <subfield code="t">Svět --</subfield>
+    <subfield code="t">Všechno mě to zajímá --</subfield>
+    <subfield code="t">Hodiny --</subfield>
+    <subfield code="t">Svetr --</subfield>
+    <subfield code="t">Tota --</subfield>
+    <subfield code="t">Moře --</subfield>
+    <subfield code="t">Prejenda --</subfield>
+    <subfield code="t">Jenda</subfield>
+  </datafield>
+  <datafield tag="511" ind1="0" ind2=" ">
+    <subfield code="a">Barbora Poláková, Štěpán Urban, Matěj Soukup, zpěv ; s instrumentálním doprovodem</subfield>
+  </datafield>
+  <datafield tag="530" ind1=" " ind2=" ">
+    <subfield code="a">Vydáno také na CD audio</subfield>
+  </datafield>
+  <datafield tag="648" ind1=" " ind2="7">
+    <subfield code="a">2021-2030</subfield>
+    <subfield code="7">ch1094457</subfield>
+    <subfield code="2">czenas</subfield>
+  </datafield>
+  <datafield tag="650" ind1="0" ind2="7">
+    <subfield code="a">populární hudba</subfield>
+    <subfield code="7">ph124352</subfield>
+    <subfield code="y">2021-2030</subfield>
+    <subfield code="2">czenas</subfield>
+  </datafield>
+  <datafield tag="650" ind1="0" ind2="9">
+    <subfield code="a">popular music</subfield>
+    <subfield code="y">2021-2030</subfield>
+    <subfield code="2">eczenas</subfield>
+  </datafield>
+  <datafield tag="655" ind1=" " ind2="7">
+    <subfield code="a">pop music</subfield>
+    <subfield code="7">fd1062837</subfield>
+    <subfield code="2">czenas</subfield>
+  </datafield>
+  <datafield tag="655" ind1=" " ind2="7">
+    <subfield code="a">elektronická hudba</subfield>
+    <subfield code="7">fd993392</subfield>
+    <subfield code="2">czenas</subfield>
+  </datafield>
+  <datafield tag="655" ind1=" " ind2="7">
+    <subfield code="a">gramofonové desky</subfield>
+    <subfield code="7">fd186718</subfield>
+    <subfield code="2">czenas</subfield>
+  </datafield>
+  <datafield tag="655" ind1=" " ind2="9">
+    <subfield code="a">pop music</subfield>
+    <subfield code="2">eczenas</subfield>
+  </datafield>
+  <datafield tag="655" ind1=" " ind2="9">
+    <subfield code="a">electronic music</subfield>
+    <subfield code="2">eczenas</subfield>
+  </datafield>
+  <datafield tag="655" ind1=" " ind2="9">
+    <subfield code="a">gramophone records</subfield>
+    <subfield code="2">eczenas</subfield>
+  </datafield>
+  <datafield tag="700" ind1="1" ind2=" ">
+    <subfield code="a">Poláková, Barbora,</subfield>
+    <subfield code="d">1983-</subfield>
+    <subfield code="7">xx0161947</subfield>
+    <subfield code="4">cmp</subfield>
+    <subfield code="4">lyr</subfield>
+    <subfield code="4">sng</subfield>
+  </datafield>
+  <datafield tag="700" ind1="1" ind2=" ">
+    <subfield code="a">Urban, Štěpán</subfield>
+    <subfield code="4">cmp</subfield>
+    <subfield code="4">itr</subfield>
+    <subfield code="4">lyr</subfield>
+    <subfield code="4">sng</subfield>
+  </datafield>
+  <datafield tag="700" ind1="1" ind2=" ">
+    <subfield code="a">Soukup, Matěj</subfield>
+    <subfield code="4">cmp</subfield>
+    <subfield code="4">sng</subfield>
+  </datafield>
+  <datafield tag="998" ind1=" " ind2=" ">
+    <subfield code="a">http://aleph.nkp.cz/F/?func=direct&amp;doc_number=003732492&amp;local_base=CNB</subfield>
+  </datafield>
+</record>
+<record xmlns="http://www.loc.gov/MARC21/slim" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.loc.gov/MARC21/slim http://www.loc.gov/standards/marcxml/schema/MARC21slim.xsd">
+  <leader>     njm a22      a 4500</leader>
+  <controlfield tag="001">cpz19970188298</controlfield>
+  <controlfield tag="003">CZ PrNK</controlfield>
+  <controlfield tag="005">20250709125926.0</controlfield>
+  <controlfield tag="007">sd fmngnnmmnee</controlfield>
+  <controlfield tag="008">970310p19961928xr mpnng i        n cze</controlfield>
+  <datafield tag="015" ind1=" " ind2=" ">
+    <subfield code="a">cnb000188298</subfield>
+  </datafield>
+  <datafield tag="028" ind1="0" ind2="1">
+    <subfield code="a">SU 5111-2801</subfield>
+    <subfield code="b">Supraphon</subfield>
+  </datafield>
+  <datafield tag="040" ind1=" " ind2=" ">
+    <subfield code="a">ABA001</subfield>
+    <subfield code="b">cze</subfield>
+  </datafield>
+  <datafield tag="045" ind1=" " ind2=" ">
+    <subfield code="a">x2x5</subfield>
+  </datafield>
+  <datafield tag="072" ind1=" " ind2="7">
+    <subfield code="a">78.011.26</subfield>
+    <subfield code="x">Populární hudba. Populární písně. Populární taneční hudba</subfield>
+    <subfield code="2">Konspekt</subfield>
+    <subfield code="9">9</subfield>
+  </datafield>
+  <datafield tag="080" ind1=" " ind2=" ">
+    <subfield code="a">78.03.011.26</subfield>
+    <subfield code="2">MRF</subfield>
+  </datafield>
+  <datafield tag="080" ind1=" " ind2=" ">
+    <subfield code="a">784.7:791</subfield>
+    <subfield code="2">MRF</subfield>
+  </datafield>
+  <datafield tag="080" ind1=" " ind2=" ">
+    <subfield code="a">78:791.636</subfield>
+    <subfield code="2">MRF</subfield>
+  </datafield>
+  <datafield tag="080" ind1=" " ind2=" ">
+    <subfield code="a">784.3/.7</subfield>
+    <subfield code="2">MRF</subfield>
+  </datafield>
+  <datafield tag="080" ind1=" " ind2=" ">
+    <subfield code="a">(086.76)</subfield>
+    <subfield code="2">MRF</subfield>
+  </datafield>
+  <datafield tag="100" ind1="1" ind2=" ">
+    <subfield code="a">Burian, Vlasta,</subfield>
+    <subfield code="d">1891-1962</subfield>
+    <subfield code="7">jk01020395</subfield>
+    <subfield code="4">cmp</subfield>
+    <subfield code="4">aut</subfield>
+    <subfield code="4">sng</subfield>
+    <subfield code="4">prf</subfield>
+  </datafield>
+  <datafield tag="245" ind1="1" ind2="0">
+    <subfield code="a">Hity Vlasty Buriana.</subfield>
+    <subfield code="n">vol. 2,</subfield>
+    <subfield code="p">Přednosta stanice</subfield>
+    <subfield code="h">[zvukový záznam]</subfield>
+  </datafield>
+  <datafield tag="246" ind1="3" ind2="0">
+    <subfield code="a">Přednosta stanice</subfield>
+  </datafield>
+  <datafield tag="260" ind1=" " ind2=" ">
+    <subfield code="a">Praha :</subfield>
+    <subfield code="b">Supraphon,</subfield>
+    <subfield code="c">p1996</subfield>
+  </datafield>
+  <datafield tag="300" ind1=" " ind2=" ">
+    <subfield code="a">1 zvuková deska (70:10) :</subfield>
+    <subfield code="b">digital, mono ;</subfield>
+    <subfield code="c">12 cm</subfield>
+  </datafield>
+  <datafield tag="306" ind1=" " ind2=" ">
+    <subfield code="a">011010</subfield>
+  </datafield>
+  <datafield tag="490" ind1="1" ind2=" ">
+    <subfield code="a">Nestárnoucí smích</subfield>
+  </datafield>
+  <datafield tag="500" ind1=" " ind2=" ">
+    <subfield code="a">Sleeve-note Vladimír Just</subfield>
+  </datafield>
+  <datafield tag="500" ind1=" " ind2=" ">
+    <subfield code="a">Kompaktní deska (AAD)</subfield>
+  </datafield>
+  <datafield tag="505" ind1="0" ind2="0">
+    <subfield code="t">Burian cestující --</subfield>
+    <subfield code="t">Mládenci, sláva --</subfield>
+    <subfield code="t">Svěcení praporu --</subfield>
+    <subfield code="t">Hople-pople --</subfield>
+    <subfield code="t">Pahorek --</subfield>
+    <subfield code="t">Portorico --</subfield>
+    <subfield code="t">Ta naše kolej --</subfield>
+    <subfield code="t">Kupředu, kupředu --</subfield>
+    <subfield code="t">U nás v Petrohradě --</subfield>
+    <subfield code="t">Dobour noc, good night --</subfield>
+    <subfield code="t">Přednosta stanice --</subfield>
+    <subfield code="t">Zamotané příbuzenstvo --</subfield>
+    <subfield code="t">Smích --</subfield>
+    <subfield code="t">Kos je vůl --</subfield>
+    <subfield code="t">Zvířata mám rád --</subfield>
+    <subfield code="t">Dvě anekdoty --</subfield>
+    <subfield code="t">Prosím jízdenku</subfield>
+    <subfield code="t">(starý Berounský)</subfield>
+  </datafield>
+  <datafield tag="511" ind1="1" ind2=" ">
+    <subfield code="a">Vlasta Burian</subfield>
+  </datafield>
+  <datafield tag="518" ind1=" " ind2=" ">
+    <subfield code="a">Nahráno v letech 1928-1957</subfield>
+  </datafield>
+  <datafield tag="648" ind1=" " ind2="4">
+    <subfield code="a">1928-1957</subfield>
+  </datafield>
+  <datafield tag="648" ind1=" " ind2="7">
+    <subfield code="a">1921-1960</subfield>
+    <subfield code="7">ch1044094</subfield>
+    <subfield code="2">czenas</subfield>
+  </datafield>
+  <datafield tag="650" ind1="0" ind2="7">
+    <subfield code="a">populární hudba</subfield>
+    <subfield code="7">ph124352</subfield>
+    <subfield code="y">1921-1960</subfield>
+    <subfield code="2">czenas</subfield>
+  </datafield>
+  <datafield tag="655" ind1=" " ind2="7">
+    <subfield code="a">filmová hudba</subfield>
+    <subfield code="7">fd1023757</subfield>
+    <subfield code="2">czenas</subfield>
+  </datafield>
+  <datafield tag="655" ind1=" " ind2="7">
+    <subfield code="a">písně</subfield>
+    <subfield code="7">fd133162</subfield>
+    <subfield code="2">czenas</subfield>
+  </datafield>
+  <datafield tag="655" ind1=" " ind2="7">
+    <subfield code="a">anekdoty</subfield>
+    <subfield code="7">fd131798</subfield>
+    <subfield code="2">czenas</subfield>
+  </datafield>
+  <datafield tag="655" ind1=" " ind2="7">
+    <subfield code="a">kompaktní disky</subfield>
+    <subfield code="7">fd201991</subfield>
+    <subfield code="2">czenas</subfield>
+  </datafield>
+  <datafield tag="700" ind1="1" ind2=" ">
+    <subfield code="a">Just, Vladimír,</subfield>
+    <subfield code="d">1946-</subfield>
+    <subfield code="7">jk01052273</subfield>
+    <subfield code="4">wam</subfield>
+  </datafield>
+  <datafield tag="830" ind1=" " ind2="0">
+    <subfield code="a">Nestárnoucí smích</subfield>
+  </datafield>
+  <datafield tag="998" ind1=" " ind2=" ">
+    <subfield code="a">http://aleph.nkp.cz/F/?func=direct&amp;doc_number=000188298&amp;local_base=CNB</subfield>
+  </datafield>
+</record>
+</collection>
