@@ -42,6 +42,14 @@ final class EditNote
 			},
 			default => '',
 		};
+		if (in_array($proposal['kind'], ['label', 'release'], true)) {
+			foreach ($pairing['labels'] as $number) {
+				if (isset($number['mb']['source'])) {
+					$source = $number['mb']['source'];
+					$lines[] = "The library names \"$number[label]\" for $number[number]; the label {$number['mb']['name']} is taken from https://musicbrainz.org/release/$source[release] with the catalogue number $source[catalog_number].";
+				}
+			}
+		}
 		if ($proposal['kind'] !== 'release') {
 			$lines[] = self::pairedBy($record, $pairing);
 		} elseif (array_filter($pairing['recordings'] ?? [])) {

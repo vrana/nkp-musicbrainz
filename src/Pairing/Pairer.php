@@ -11,7 +11,7 @@ use NkpMusicBrainz\Text;
 final class Pairer
 {
 
-	public const VERSION = 15; // increase when pairing or proposals change, the next run regenerates them
+	public const VERSION = 16; // increase when pairing or proposals change, the next run regenerates them
 
 	private const FORMAT_FAMILIES = [1 => 'CD', 3 => 'CD', 7 => 'Vinyl', 53 => 'Vinyl', 8 => 'Cassette'];
 
@@ -113,7 +113,7 @@ final class Pairer
 			$pairing['artists'] = $artists[$cnb] ?? [];
 			$pairing['credit'] = Credit::resolve($record, $pairing['artists']);
 			$releasesOfRecord = array_values(array_filter([$pairing['release'], ...array_map(fn($id) => $releases[$id] ?? null, array_keys($candidates[$cnb] ?? []))]));
-			$pairing['labels'] = array_map(fn($number) => $number + ['mb' => self::label($number['label'], $record, $labels, $releasesOfRecord)], $record['catalog_numbers']);
+			$pairing['labels'] = array_map(fn($number) => $number + ['mb' => self::label($number['label'], $record, $labels, $releasesOfRecord) ?? self::imprint($number['number'], $releasesOfRecord)], $record['catalog_numbers']);
 			$pairings[$cnb] = $pairing;
 			$stats['pairing: ' . $pairing['method']] = ($stats['pairing: ' . $pairing['method']] ?? 0) + 1;
 		}
@@ -328,14 +328,14 @@ final class Pairer
 			];
 		}
 		$statement = $db->prepare("
-			SELECT rl.release, rl.id, l.id AS label_id, l.gid AS label_gid, l.name AS label, rl.catalog_number
-			FROM {$mb('release_label')} rl LEFT JOIN {$mb('label')} l ON l.id = rl.label
+			SELECT rl.release, rl.id, l.id AS label_id, l.gid AS label_gid, l.name AS label, lt.name AS label_type, rl.catalog_number
+			FROM {$mb('release_label')} rl LEFT JOIN {$mb('label')} l ON l.id = rl.label LEFT JOIN {$mb('label_type')} lt ON lt.id = l.type
 			WHERE rl.release = ANY(CAST(:ids AS integer[])) ORDER BY rl.id
 		");
 		$statement->execute($parameters);
 		foreach ($statement as $row) {
 			$releases[(int) $row['release']]['labels'][] = [
-				'id' => (int) $row['id'], 'label' => $row['label_id'] === null ? null : ['id' => (int) $row['label_id'], 'gid' => $row['label_gid'], 'name' => $row['label']],
+				'id' => (int) $row['id'], 'label' => $row['label_id'] === null ? null : ['id' => (int) $row['label_id'], 'gid' => $row['label_gid'], 'name' => $row['label'], 'type' => $row['label_type']],
 				'catalog_number' => $row['catalog_number'],
 			];
 		}
@@ -439,6 +439,9 @@ final class Pairer
 			$statement->execute($parameters);
 			foreach ($statement as $row) {
 				if ($row['not_release_label']) { // not for release label use on MusicBrainz, and library records aren't bootlegs
+					if (isset($names[$row['name']])) {
+						$labels['exact'][$row['name']] ??= []; // found, the normalized names wouldn't find a release label either
+					}
 					continue;
 				}
 				$label = ['id' => (int) $row['id'], 'gid' => $row['gid'], 'name' => $row['label'], 'country' => $row['country'], 'own' => (bool) $row['own'], 'czech' => 0];
@@ -535,6 +538,44 @@ final class Pairer
 			}
 		}
 		return count($options) === 1 ? $pick(reset($options)) : null; // the only one, also if it has no Czech releases
+	}
+
+
+	/**
+	 * the label of a candidate release with the same catalogue number root, e.g. the cassette "478088 4" gets Epic of the CD "478088 2",
+	 * for records naming a company (often a holding, which isn't a release label) or a label the name pairing can't find
+	 * @param list<array<string, mixed>> $releases candidate releases
+	 * @return ?array<string, mixed>
+	 */
+	private static function imprint(string $number, array $releases): ?array
+	{
+		$root = self::catalogRoot($number);
+		if (strlen($root) < 5) {
+			return null;
+		}
+		foreach ($releases as $release) {
+			foreach ($release['labels'] as $releaseLabel) {
+				$label = $releaseLabel['label'];
+				if ($label !== null && !in_array($label['type'], ['Holding', 'Rights Society', 'Bootleg Production'], true)
+					&& $label['gid'] !== '157afde4-4bf5-4039-8ad2-5a15acc85176' // [no label], special purpose
+					&& $releaseLabel['catalog_number'] !== null && self::catalogRoot($releaseLabel['catalog_number']) === $root
+				) {
+					return ['id' => $label['id'], 'gid' => $label['gid'], 'name' => $label['name'], 'source' => ['release' => $release['gid'], 'catalog_number' => $releaseLabel['catalog_number']]];
+				}
+			}
+		}
+		return null;
+	}
+
+
+	/** the catalogue number without its format suffix: "478088 4" and "478088 2" are "478088" */
+	private static function catalogRoot(string $number): string
+	{
+		$groups = preg_split('~[\s-]+~', trim($number), -1, PREG_SPLIT_NO_EMPTY) ?: [];
+		if (count($groups) >= 2 && strlen((string) end($groups)) <= 3) {
+			array_pop($groups);
+		}
+		return Text::code(implode('', $groups));
 	}
 
 
