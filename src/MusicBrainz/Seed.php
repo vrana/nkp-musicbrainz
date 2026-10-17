@@ -83,6 +83,9 @@ final class Seed
 			if ($track['length'] !== null) {
 				$fields["mediums.0.track.$i.length"] = $track['length'];
 			}
+			if (($pairing['recordings'][$i] ?? null) !== null) {
+				$fields["mediums.0.track.$i.recording"] = $pairing['recordings'][$i];
+			}
 		}
 		$fields['edit_note'] = EditNote::create($proposal, $record, $pairing, seeded: true);
 		return $fields;

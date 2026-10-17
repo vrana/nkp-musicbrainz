@@ -244,7 +244,7 @@ final class Builder
 				'edit_type' => self::EDIT_MEDIUM_CREATE, 'name' => '', 'format_id' => $this->formats[$record['format'] ?? ''] ?? null, 'position' => 1,
 				'tracklist' => array_map(fn($track, $i) => [
 					'name' => $track['title'], 'position' => $i + 1, 'number' => (string) ($i + 1), 'length' => $track['length'],
-					'artist_credit' => $artistCredit, 'recording_gid' => null, 'is_data_track' => false,
+					'artist_credit' => $artistCredit, 'recording_gid' => $pairing['recordings'][$i] ?? null, 'is_data_track' => false,
 				], $record['tracks'], array_keys($record['tracks'])),
 			],
 		];
@@ -258,6 +258,9 @@ final class Builder
 			'format' => ($record['format'] ?? '?') . ', ' . count($record['tracks']) . ' tracks',
 			'tracks' => implode(' / ', array_map(fn($track) => $track['title'] . ($track['length'] ? ' (' . self::length($track['length']) . ')' : ''), $record['tracks'])),
 		];
+		if ($group !== null) {
+			$proposed['recordings'] = count(array_filter($pairing['recordings'])) . ' of ' . count($record['tracks']) . ' tracks use existing recordings of the release group';
+		}
 		return $this->proposal($record, 'release', null, [], $proposed, [], $reason, $create);
 	}
 

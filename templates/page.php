@@ -182,7 +182,7 @@ $methods = [
 				<tr><th>Proposal</th><th>MusicBrainz now</th><th>Proposed</th><th>Choice</th></tr>
 				<?php foreach ($item['proposals'] as $proposal) {
 					$shown = array_filter($proposal['proposed'], fn($key) => $key[0] !== '_', ARRAY_FILTER_USE_KEY);
-					$order = array_flip(['title', 'artist', 'release group', 'events', 'label', 'barcode', 'format', 'tracks']); // jsonb doesn't keep the order
+					$order = array_flip(['title', 'artist', 'release group', 'events', 'label', 'barcode', 'format', 'tracks', 'recordings']); // jsonb doesn't keep the order
 					uksort($shown, fn($a, $b) => ($order[$a] ?? 99) <=> ($order[$b] ?? 99));
 					?>
 					<tr>

@@ -11,7 +11,7 @@ use NkpMusicBrainz\Text;
 final class Pairer
 {
 
-	public const VERSION = 10; // increase when pairing or proposals change, the next run regenerates them
+	public const VERSION = 11; // increase when pairing or proposals change, the next run regenerates them
 
 	private const FORMAT_FAMILIES = [1 => 'CD', 3 => 'CD', 7 => 'Vinyl', 53 => 'Vinyl', 8 => 'Cassette'];
 
@@ -116,7 +116,15 @@ final class Pairer
 			$pairing['labels'] = array_map(fn($number) => $number + ['mb' => self::label($number['label'], $record, $labels, $releasesOfRecord)], $record['catalog_numbers']);
 			$pairings[$cnb] = $pairing;
 			$stats['pairing: ' . $pairing['method']] = ($stats['pairing: ' . $pairing['method']] ?? 0) + 1;
-			foreach ($builder->build($record, $pairing) as $proposal) {
+		}
+		$recordings = $this->recordings(array_values(array_unique(array_filter(array_map(fn($pairing) => $pairing['release'] === null ? ($pairing['release_group']['id'] ?? null) : null, $pairings)))));
+		foreach ($pairings as $cnb => $pairing) {
+			// a new release in an existing release group reuses its recordings
+			$pairing['recordings'] = $pairing['release'] === null && $pairing['release_group'] !== null
+				? array_map(fn($track) => self::recording($track['title'], $recordings[$pairing['release_group']['id']] ?? []), $records[$cnb]['tracks'])
+				: [];
+			$pairings[$cnb] = $pairing;
+			foreach ($builder->build($records[$cnb], $pairing) as $proposal) {
 				$proposals[] = $proposal;
 				$key = 'proposal: ' . $proposal['kind'] . ($proposal['reason'] === null ? '' : ' (not processable)');
 				$stats[$key] = ($stats[$key] ?? 0) + 1;
@@ -356,6 +364,44 @@ final class Pairer
 		}
 		$this->progress(count($releases) . " candidate releases loaded\n");
 		return $releases;
+	}
+
+
+	/**
+	 * recordings on the releases of the release groups, by release group and normalized track or recording title
+	 * @param list<int> $groups
+	 * @return array<int, array<string, array<string, true>>>
+	 */
+	private function recordings(array $groups): array
+	{
+		$mb = $this->app->mb(...);
+		$statement = $this->app->db()->prepare("
+			SELECT DISTINCT r.release_group, t.name AS track, rec.gid, rec.name
+			FROM {$mb('release')} r
+			JOIN {$mb('medium')} m ON m.release = r.id
+			JOIN {$mb('track')} t ON t.medium = m.id
+			JOIN {$mb('recording')} rec ON rec.id = t.recording
+			WHERE r.release_group = ANY(CAST(:groups AS integer[]))
+		");
+		$statement->execute(['groups' => '{' . implode(',', $groups) . '}']);
+		$recordings = [];
+		foreach ($statement as $row) {
+			foreach ([$row['track'], $row['name']] as $title) {
+				$recordings[(int) $row['release_group']][Text::code($title)][$row['gid']] = true;
+			}
+		}
+		return $recordings;
+	}
+
+
+	/**
+	 * the only recording of the title in the release group, null when there is none or several (e.g. live versions)
+	 * @param array<string, array<string, true>> $recordings
+	 */
+	private static function recording(string $title, array $recordings): ?string
+	{
+		$found = array_keys($recordings[Text::code($title)] ?? []);
+		return count($found) === 1 ? $found[0] : null;
 	}
 
 

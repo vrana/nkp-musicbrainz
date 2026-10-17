@@ -44,6 +44,8 @@ final class EditNote
 		};
 		if ($proposal['kind'] !== 'release') {
 			$lines[] = self::pairedBy($record, $pairing);
+		} elseif (array_filter($pairing['recordings'] ?? [])) {
+			$lines[] = 'Tracks use the existing recordings of the release group where only one recording has the same title.';
 		}
 		$lines[] = $seeded ? 'Prefilled with ' . self::REPOSITORY . '.' : 'Submitted with ' . self::REPOSITORY . ' after a manual review of the proposal.';
 		return implode("\n", array_filter($lines));
