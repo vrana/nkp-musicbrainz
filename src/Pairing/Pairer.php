@@ -11,7 +11,7 @@ use NkpMusicBrainz\Text;
 final class Pairer
 {
 
-	public const VERSION = 7; // increase when pairing or proposals change, the next run regenerates them
+	public const VERSION = 10; // increase when pairing or proposals change, the next run regenerates them
 
 	private const FORMAT_FAMILIES = [1 => 'CD', 3 => 'CD', 7 => 'Vinyl', 53 => 'Vinyl', 8 => 'Cassette'];
 
@@ -179,7 +179,7 @@ final class Pairer
 		$db = $this->app->db();
 		$barcodes = $catalogNumbers = $names = $authorities = [];
 		foreach ($records as $cnb => $record) {
-			foreach ($record['barcodes'] as $barcode) {
+			foreach (Builder::barcodes($record) as $barcode) {
 				$barcodes[] = [$cnb, Text::barcodeKey($barcode)];
 			}
 			foreach ($record['catalog_numbers'] as $number) {

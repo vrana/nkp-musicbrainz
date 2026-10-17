@@ -2,6 +2,7 @@
 
 namespace NkpMusicBrainz\MusicBrainz;
 
+use NkpMusicBrainz\Proposal\Builder;
 use NkpMusicBrainz\Text;
 
 /** releases suggested for manual pairing, found by the MusicBrainz search */
@@ -23,7 +24,7 @@ final class Suggest
 		$queries = [];
 		$artist = self::artist($record);
 		$queries[] = 'release:(' . self::escape($record['title']) . ')' . ($artist !== '' ? ' AND artist:(' . self::escape($artist) . ')' : '');
-		foreach ($record['barcodes'] as $barcode) {
+		foreach (Builder::barcodes($record) as $barcode) {
 			$queries[] = "barcode:$barcode";
 		}
 		foreach ($record['catalog_numbers'] as $number) {

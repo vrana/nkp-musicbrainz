@@ -3,6 +3,7 @@
 namespace NkpMusicBrainz\MusicBrainz;
 
 use NkpMusicBrainz\App;
+use NkpMusicBrainz\Proposal\Builder;
 use NkpMusicBrainz\Text;
 
 /** fields prefilling the MusicBrainz release editor (release editor seeding) with a new release */
@@ -54,7 +55,7 @@ final class Seed
 		if ($record['country'] !== null) {
 			$fields['events.0.country'] = $record['country'];
 		}
-		foreach ($pairing['labels'] as $i => $number) {
+		foreach (Builder::catalogNumbers($pairing['labels'], $record['barcodes']) as $i => $number) {
 			$fields["labels.$i.catalog_number"] = $number['number'];
 			if ($number['mb']) {
 				$fields["labels.$i.mbid"] = $number['mb']['gid'];
@@ -62,8 +63,9 @@ final class Seed
 				$fields["labels.$i.name"] = $number['label'];
 			}
 		}
-		if (count($record['barcodes']) === 1) {
-			$fields['barcode'] = $record['barcodes'][0];
+		$barcodes = Builder::barcodes($record);
+		if (count($barcodes) === 1) {
+			$fields['barcode'] = $barcodes[0];
 		}
 		$language = $this->languages[$record['language'] ?? ''] ?? null;
 		if ($language !== null) {

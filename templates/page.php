@@ -171,9 +171,10 @@ $methods = [
 						<td><?= $h(implode(' + ', array_fill(0, $record['discs'] ?? 1, $record['format'] ?? '?'))) ?></td>
 						<td><?= count($record['tracks']) ?></td>
 						<td><?= $h(trim(($record['country'] ?? '') . ' ' . ($record['year'] ?? ''))) ?></td>
-						<td><?= implode('<br>', array_map(fn($number) => $h($number['label']), $record['catalog_numbers'])) ?></td>
-						<td><?= implode('<br>', array_map(fn($number) => $h($number['number']), $record['catalog_numbers'])) ?></td>
-						<td><?= $h(implode(', ', $record['barcodes'])) ?></td>
+						<?php $numbers = Builder::catalogNumbers($record['catalog_numbers'], $record['barcodes']); ?>
+						<td><?= implode('<br>', array_map(fn($number) => $h($number['label']), $numbers)) ?></td>
+						<td><?= implode('<br>', array_map(fn($number) => $h($number['number']), $numbers)) ?></td>
+						<td><?= $h(implode(', ', Builder::barcodes($record))) ?></td>
 					</tr>
 				</table></div>
 			<?php } ?>

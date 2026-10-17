@@ -51,6 +51,12 @@ $check('qualifier without " --" continues the track', [count($burian['tracks']),
 $check('GTIN checksum', [Text::isValidGtin('8595082724279'), Text::isValidGtin('8595082724270'), Text::isValidGtin('099925335526')], [true, false, true]);
 $check('UPC and EAN forms match', Text::barcodeKey('0099925335526'), Text::barcodeKey('099925335526'));
 $check('labels agree', [Text::labelsAgree('B&M', 'B&M Music'), Text::labelsAgree('Supraphon', 'Panton')], [true, false]);
+$check('catalogue numbers that are barcodes', array_column(NkpMusicBrainz\Proposal\Builder::catalogNumbers([
+	['number' => '7243 8 56809 2 2', 'label' => 'Monitor-EMI'], ['number' => '8 56809 2', 'label' => 'Monitor-EMI'],
+	['number' => 'SU 6300-2', 'label' => 'Supraphon'], ['number' => '0081', 'label' => 'B&M'],
+], []), 'number'), ['8 56809 2', 'SU 6300-2', '0081']);
+$check('barcode from a catalogue number', NkpMusicBrainz\Proposal\Builder::barcodes(['barcodes' => [], 'catalog_numbers' => [['number' => '7243 8 56809 2 2', 'label' => ''], ['number' => '8 56809 2', 'label' => '']]]), ['724385680922']);
+$check('own barcode first', NkpMusicBrainz\Proposal\Builder::barcodes(['barcodes' => ['099925630027'], 'catalog_numbers' => [['number' => '7243 8 56809 2 2', 'label' => '']]]), ['099925630027']);
 $check('direct name', Text::directName('Svěrák, Zdeněk'), 'Zdeněk Svěrák');
 
 echo $failures ? "$failures failed\n" : "all passed\n";

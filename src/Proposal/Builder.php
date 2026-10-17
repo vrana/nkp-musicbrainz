@@ -84,8 +84,9 @@ final class Builder
 	 */
 	private function barcode(array $record, array $pairing, array $release): ?array
 	{
-		$barcode = $record['barcodes'][0] ?? null;
-		if ($pairing['method'] === 'barcode' || count($record['barcodes']) !== 1 || !Text::isValidGtin((string) $barcode) || $release['barcode'] !== null) {
+		$barcodes = self::barcodes($record);
+		$barcode = $barcodes[0] ?? null;
+		if ($pairing['method'] === 'barcode' || count($barcodes) !== 1 || !Text::isValidGtin((string) $barcode) || $release['barcode'] !== null) {
 			return null; // '' on MusicBrainz means the release has no barcode
 		}
 		return $this->proposal($record, 'barcode', $release['gid'], ['barcode' => ''], ['barcode' => $barcode], [
@@ -149,13 +150,15 @@ final class Builder
 	{
 		$proposals = [];
 		$existing = array_filter(array_map(fn($label) => Text::code((string) $label['catalog_number']), $release['labels']));
-		foreach ($pairing['labels'] as $number) {
+		$filled = []; // release labels with a proposed catalogue number, one is enough
+		foreach (self::catalogNumbers($pairing['labels'], [...$record['barcodes'], (string) $release['barcode']]) as $number) {
 			if (in_array(Text::code($number['number']), $existing, true)) {
 				continue;
 			}
 			$withoutNumber = array_values(array_filter($release['labels'], fn($label) => $label['catalog_number'] === null && $label['label'] !== null && Text::labelsAgree($number['label'], $label['label']['name'])));
-			if (count($withoutNumber) === 1) {
+			if (count($withoutNumber) === 1 && !isset($filled[$withoutNumber[0]['id']])) {
 				$row = $withoutNumber[0];
+				$filled[$row['id']] = true;
 				$proposals[] = $this->proposal($record, 'catno', $release['gid'], ['catalog number' => "{$row['label']['name']}: –"], ['catalog number' => "{$row['label']['name']}: $number[number]"], [[
 					'edit_type' => self::EDIT_RELEASE_EDITRELEASELABEL,
 					'release_label' => $row['id'],
@@ -217,10 +220,12 @@ final class Builder
 			default => null,
 		};
 		$title = $record['title']; // as on the release, also for a new release in a release group on MusicBrainz
-		$barcode = count($record['barcodes']) === 1 && Text::isValidGtin($record['barcodes'][0]) ? $record['barcodes'][0] : null;
+		$barcodes = self::barcodes($record);
+		$barcode = count($barcodes) === 1 && Text::isValidGtin($barcodes[0]) ? $barcodes[0] : null;
 		$countryId = $record['country'] === null ? null : ($this->countries[$record['country']] ?? null);
 		$events = $record['year'] === null && $countryId === null ? [] : [['country_id' => $countryId, 'date' => ['year' => $record['year'], 'month' => null, 'day' => null]]];
 		$artistCredit = ['names' => $credit['names']];
+		$numbers = self::catalogNumbers($pairing['labels'], $record['barcodes']);
 		$languageId = $this->languages[$record['language'] ?? ''] ?? null;
 
 		$create = [
@@ -234,7 +239,7 @@ final class Builder
 				'script_id' => in_array($record['language'], self::LATIN_LANGUAGES, true) ? $this->latin : null,
 				'status_id' => $this->official, 'events' => $events,
 			],
-			'labels' => array_map(fn($number) => ['edit_type' => self::EDIT_RELEASE_ADDRELEASELABEL, 'label' => $number['mb']['id'] ?? null, 'catalog_number' => $number['number']], $pairing['labels']),
+			'labels' => array_map(fn($number) => ['edit_type' => self::EDIT_RELEASE_ADDRELEASELABEL, 'label' => $number['mb']['id'] ?? null, 'catalog_number' => $number['number']], $numbers),
 			'medium' => [
 				'edit_type' => self::EDIT_MEDIUM_CREATE, 'name' => '', 'format_id' => $this->formats[$record['format'] ?? ''] ?? null, 'position' => 1,
 				'tracklist' => array_map(fn($track, $i) => [
@@ -248,7 +253,7 @@ final class Builder
 			'artist' => implode('', array_map(fn($name) => $name['name'] . ($name['join_phrase'] ?? ''), $credit['names'])) ?: '?',
 			'release group' => $group === null ? 'new' : $group['name'],
 			'events' => self::eventsText(array_map(fn($event) => $event + ['country' => $record['country']], $events)),
-			'label' => implode(', ', array_map(fn($number) => ($number['mb']['name'] ?? $number['label']) . ": $number[number]", $pairing['labels'])),
+			'label' => implode(', ', array_map(fn($number) => ($number['mb']['name'] ?? $number['label']) . ": $number[number]", $numbers)),
 			'barcode' => $barcode ?? '',
 			'format' => ($record['format'] ?? '?') . ', ' . count($record['tracks']) . ' tracks',
 			'tracks' => implode(' / ', array_map(fn($track) => $track['title'] . ($track['length'] ? ' (' . self::length($track['length']) . ')' : ''), $record['tracks'])),
@@ -277,6 +282,42 @@ final class Builder
 			'proposed' => $proposed + ['_edits' => $edits, '_create' => $create],
 			'reason' => $reason,
 		];
+	}
+
+
+	/**
+	 * catalogue numbers except the ones which are barcodes, EMI prints "7243 8 56809 2 2" for 724385680922
+	 * @param list<array<string, mixed>> $numbers
+	 * @param list<string> $barcodes
+	 * @return list<array<string, mixed>>
+	 */
+	public static function catalogNumbers(array $numbers, array $barcodes): array
+	{
+		$keys = array_filter(array_map(Text::barcodeKey(...), $barcodes));
+		return array_values(array_filter($numbers, fn($number) => !self::isBarcode($number['number']) && !in_array(Text::barcodeKey($number['number']), $keys, true)));
+	}
+
+
+	/**
+	 * barcodes of the record, or its catalogue numbers which are barcodes when it has none
+	 * @param array<string, mixed> $record
+	 * @return list<string>
+	 */
+	public static function barcodes(array $record): array
+	{
+		if ($record['barcodes']) {
+			return $record['barcodes'];
+		}
+		$numbers = array_filter(array_column($record['catalog_numbers'], 'number'), self::isBarcode(...));
+		return array_values(array_unique(array_map(fn($number) => (string) preg_replace('~\D+~', '', $number), $numbers)));
+	}
+
+
+	/** only digits and separators, 12 or 13 digits with a valid check digit */
+	private static function isBarcode(string $number): bool
+	{
+		$digits = (string) preg_replace('~\D+~', '', $number);
+		return preg_match('~^[\d\s-]+$~', $number) && in_array(strlen($digits), [12, 13], true) && Text::isValidGtin($digits);
 	}
 
 

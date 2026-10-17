@@ -2,6 +2,8 @@
 
 namespace NkpMusicBrainz\MusicBrainz;
 
+use NkpMusicBrainz\Proposal\Builder;
+
 /** edit notes explaining where the data comes from and how the release was paired */
 final class EditNote
 {
@@ -71,7 +73,7 @@ final class EditNote
 	private static function pairedBy(array $record, array $pairing): string
 	{
 		return match ($pairing['method']) {
-			'barcode' => 'The release was paired by the barcode ' . implode(', ', $record['barcodes']) . '.',
+			'barcode' => 'The release was paired by the barcode ' . implode(', ', Builder::barcodes($record)) . '.',
 			'catno' => 'The release was paired by the catalogue number ' . implode(', ', array_column($record['catalog_numbers'], 'number')) . ' with an agreeing label or title.',
 			'manual' => 'The release was paired manually.',
 			default => 'The release was paired by its title and artist.',
