@@ -57,6 +57,7 @@ $check('catalogue numbers that are barcodes', array_column(NkpMusicBrainz\Propos
 ], []), 'number'), ['8 56809 2', 'SU 6300-2', '0081']);
 $check('barcode from a catalogue number', NkpMusicBrainz\Proposal\Builder::barcodes(['barcodes' => [], 'catalog_numbers' => [['number' => '7243 8 56809 2 2', 'label' => ''], ['number' => '8 56809 2', 'label' => '']]]), ['724385680922']);
 $check('own barcode first', NkpMusicBrainz\Proposal\Builder::barcodes(['barcodes' => ['099925630027'], 'catalog_numbers' => [['number' => '7243 8 56809 2 2', 'label' => '']]]), ['099925630027']);
+$check('ellipsis transcribed as --', [Text::clean('Možná hledáš lásku-- /'), Text::clean('Být--'), Text::clean('A -- B')], ['Možná hledáš lásku…', 'Být…', 'A -- B']);
 $check('direct name', Text::directName('Svěrák, Zdeněk'), 'Zdeněk Svěrák');
 
 echo $failures ? "$failures failed\n" : "all passed\n";

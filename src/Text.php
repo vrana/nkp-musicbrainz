@@ -69,10 +69,11 @@ final class Text
 	}
 
 
-	/** without [cataloguer additions] and the ISBD punctuation at the end */
+	/** without [cataloguer additions] and the ISBD punctuation at the end, an ellipsis transcribed as "--" (AACR2) is "…" again */
 	public static function clean(string $text): string
 	{
 		$text = (string) preg_replace('~\[[^\]]*\]~u', '', $text);
+		$text = (string) preg_replace('~(?<=[^\s-])--(?=[\s,;:/=]|$)~u', '…', $text);
 		return trim((string) preg_replace('~[\s/:;,.=]+$~u', '', $text));
 	}
 
