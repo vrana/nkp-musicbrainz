@@ -11,7 +11,7 @@ use NkpMusicBrainz\Text;
 final class Pairer
 {
 
-	public const VERSION = 11; // increase when pairing or proposals change, the next run regenerates them
+	public const VERSION = 15; // increase when pairing or proposals change, the next run regenerates them
 
 	private const FORMAT_FAMILIES = [1 => 'CD', 3 => 'CD', 7 => 'Vinyl', 53 => 'Vinyl', 8 => 'Cassette'];
 
@@ -406,9 +406,9 @@ final class Pairer
 
 
 	/**
-	 * MusicBrainz labels named so by their name or an alias, by lowercase name
+	 * MusicBrainz labels for the catalogue label names: by the exact name or an alias, and by a name normalized as Text::label() does
 	 * @param array<string, array<string, mixed>> $records
-	 * @return array<string, list<array{id: int, gid: string, name: string, country: ?string}>>
+	 * @return array{exact: array<string, array<int, array<string, mixed>>>, normalized: array<string, array<int, array<string, mixed>>>, artists: array<string, array<int, int>>}
 	 */
 	private function labels(array $records): array
 	{
@@ -416,44 +416,98 @@ final class Pairer
 		foreach ($records as $record) {
 			foreach ($record['catalog_numbers'] as $number) {
 				if ($number['label'] !== '') {
-					$names[mb_strtolower($number['label'])] = true;
+					$names[mb_strtolower($number['label'])] = Text::label($number['label']);
 				}
 			}
 		}
 		$mb = $this->app->mb(...);
+		// the same as Text::label(): without (comments), accents and punctuation, lowercase, without suffixes like Records or s.r.o.
+		$key = "regexp_replace(lower(regexp_replace({$mb('musicbrainz_unaccent')}(regexp_replace(n.name, '\\(.*?\\)', '', 'g')), '[^A-Za-z0-9]', '', 'g')), '(records|recordings|music|musik|production|productions|spolsro|sro|as|ltd|gmbh|inc)+$', '')";
+		$labels = ['exact' => [], 'normalized' => [], 'artists' => []];
+		$all = [];
+		$query = function (string $condition, array $parameters) use ($mb, $key, &$labels, &$all, $names): void {
+			$statement = $this->app->db()->prepare("
+				SELECT lower(n.name) AS name, $key AS key, l.id, l.gid, l.name AS label, i.code AS country, bool_or(n.own) AS own,
+					coalesce(lt.name, '') IN ('Holding', 'Rights Society', 'Bootleg Production') AS not_release_label
+				FROM (SELECT id, name, true AS own FROM {$mb('label')} UNION ALL SELECT label, name, false FROM {$mb('label_alias')}) n
+				JOIN {$mb('label')} l ON l.id = n.id
+				LEFT JOIN {$mb('label_type')} lt ON lt.id = l.type
+				LEFT JOIN {$mb('iso_3166_1')} i ON i.area = l.area
+				WHERE $condition
+				GROUP BY 1, 2, l.id, l.gid, l.name, i.code, lt.name
+			");
+			$statement->execute($parameters);
+			foreach ($statement as $row) {
+				if ($row['not_release_label']) { // not for release label use on MusicBrainz, and library records aren't bootlegs
+					continue;
+				}
+				$label = ['id' => (int) $row['id'], 'gid' => $row['gid'], 'name' => $row['label'], 'country' => $row['country'], 'own' => (bool) $row['own'], 'czech' => 0];
+				$all[$label['id']] = $label;
+				if (isset($names[$row['name']])) {
+					$labels['exact'][$row['name']][$label['id']] = $label;
+				}
+				$labels['normalized'][$row['key']][$label['id']] = $label;
+			}
+		};
+		$query('lower(n.name) = ANY(CAST(:names AS text[]))', ['names' => Importer::pgArray(array_map('strval', array_keys($names)))]);
+		$missing = array_values(array_unique(array_filter(array_diff_key($names, $labels['exact']), fn($key) => strlen($key) >= 2)));
+		if ($missing) { // normalizing all labels takes seconds, only for names without an exact match
+			$query("$key = ANY(CAST(:keys AS text[]))", ['keys' => Importer::pgArray($missing)]);
+		}
+		if (!$all) {
+			return $labels;
+		}
+		$ids = '{' . implode(',', array_keys($all)) . '}';
+
 		$statement = $this->app->db()->prepare("
-			SELECT DISTINCT lower(n.name) AS key, l.id, l.gid, l.name, i.code AS country
-			FROM (SELECT id, name FROM {$mb('label')} UNION ALL SELECT label, name FROM {$mb('label_alias')}) n
-			JOIN {$mb('label')} l ON l.id = n.id
-			LEFT JOIN {$mb('iso_3166_1')} i ON i.area = l.area
-			WHERE lower(n.name) = ANY(CAST(:names AS text[]))
+			SELECT rl.label, count(DISTINCT rl.release) AS czech
+			FROM {$mb('release_label')} rl
+			JOIN {$mb('release_country')} rc ON rc.release = rl.release
+			JOIN {$mb('iso_3166_1')} i ON i.area = rc.country AND i.code IN ('CZ', 'XC', 'SK')
+			WHERE rl.label = ANY(CAST(:ids AS integer[]))
+			GROUP BY rl.label
 		");
-		$statement->execute(['names' => Importer::pgArray(array_map('strval', array_keys($names)))]);
-		$labels = [];
+		$statement->execute(['ids' => $ids]);
+		$czech = array_map('intval', $statement->fetchAll(\PDO::FETCH_KEY_PAIR));
+		foreach (['exact', 'normalized'] as $kind) {
+			foreach ($labels[$kind] as $name => $options) {
+				foreach ($options as $id => $label) {
+					$labels[$kind][$name][$id]['czech'] = $czech[$id] ?? 0;
+				}
+			}
+		}
+
+		$statement = $this->app->db()->prepare("
+			SELECT na.cnb, rl.label, count(DISTINCT r.id) AS releases
+			FROM nk_artist na
+			JOIN {$mb('artist_credit_name')} acn ON acn.artist = na.id
+			JOIN {$mb('release')} r ON r.artist_credit = acn.artist_credit
+			JOIN {$mb('release_label')} rl ON rl.release = r.id
+			WHERE rl.label = ANY(CAST(:ids AS integer[]))
+			GROUP BY na.cnb, rl.label
+		");
+		$statement->execute(['ids' => $ids]);
 		foreach ($statement as $row) {
-			$labels[$row['key']][] = ['id' => (int) $row['id'], 'gid' => $row['gid'], 'name' => $row['name'], 'country' => $row['country']];
+			$labels['artists'][$row['cnb']][(int) $row['label']] = (int) $row['releases'];
 		}
 		return $labels;
 	}
 
 
 	/**
-	 * one of the labels of the name: the one on a candidate release, the only one from the country of publication or the only one
+	 * one of the labels of the name, by the exact name or an alias, or by the normalized name if none has it:
+	 * the one on a candidate release, then among the labels of the name and if none fits also among the aliases:
+	 * clearly the most used by the artists, the only one from the country of publication or clearly the one with the most
+	 * Czech, Czechoslovak and Slovak releases; at last the only label of the name
 	 * @param array<string, mixed> $record
-	 * @param array<string, list<array{id: int, gid: string, name: string, country: ?string}>> $labels
+	 * @param array<string, mixed> $labels from labels()
 	 * @param list<array<string, mixed>> $releases candidate releases
 	 * @return ?array{id: int, gid: string, name: string}
 	 */
 	private static function label(string $name, array $record, array $labels, array $releases): ?array
 	{
-		$options = [];
-		foreach ($labels[mb_strtolower($name)] ?? [] as $label) {
-			$options[$label['id']] = $label;
-		}
-		$pick = function (array $label): array {
-			unset($label['country']);
-			return $label;
-		};
+		$options = $labels['exact'][mb_strtolower($name)] ?? $labels['normalized'][Text::label($name)] ?? [];
+		$pick = fn(array $label): array => ['id' => $label['id'], 'gid' => $label['gid'], 'name' => $label['name']];
 		foreach ($releases as $release) {
 			foreach ($release['labels'] as $releaseLabel) {
 				if (isset($options[$releaseLabel['label']['id'] ?? 0])) {
@@ -462,11 +516,39 @@ final class Pairer
 			}
 		}
 		$countries = ['CZ' => ['CZ', 'XC'], 'XC' => ['XC', 'CZ'], 'SK' => ['SK', 'XC']][$record['country'] ?? ''] ?? [];
-		$local = array_values(array_filter($options, fn($label) => in_array($label['country'], $countries, true)));
-		if (count($local) === 1) {
-			return $pick($local[0]);
+		$own = array_filter($options, fn($label) => $label['own']);
+		foreach (array_unique([$own, $options], SORT_REGULAR) as $pool) { // the label's own name before its aliases
+			if (!$pool) {
+				continue;
+			}
+			$leader = self::leader(array_map(fn($label) => $labels['artists'][$record['cnb']][$label['id']] ?? 0, $pool));
+			if ($leader !== null) {
+				return $pick($pool[$leader]);
+			}
+			$local = array_values(array_filter($pool, fn($label) => in_array($label['country'], $countries, true)));
+			if (count($local) === 1) {
+				return $pick($local[0]);
+			}
+			$leader = self::leader(array_map(fn($label) => $label['czech'], $pool));
+			if ($leader !== null) {
+				return $pick($pool[$leader]);
+			}
 		}
-		return count($options) === 1 ? $pick(reset($options)) : null;
+		return count($options) === 1 ? $pick(reset($options)) : null; // the only one, also if it has no Czech releases
+	}
+
+
+	/**
+	 * the key with clearly the highest count: at least 2 and three times the second
+	 * @param array<int, int> $counts
+	 */
+	private static function leader(array $counts): ?int
+	{
+		arsort($counts);
+		$top = array_slice($counts, 0, 2, true);
+		$first = (int) reset($top);
+		$second = (int) (array_values($top)[1] ?? 0);
+		return $first >= 2 && $first >= 3 * $second ? (int) array_key_first($top) : null;
 	}
 
 
