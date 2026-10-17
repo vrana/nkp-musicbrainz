@@ -54,12 +54,17 @@ CREATE TABLE IF NOT EXISTS decision (
 
 CREATE INDEX IF NOT EXISTS decision_batch_idx ON decision (batch);
 
+DO $$ BEGIN
+	CREATE TYPE manual_pairing_entity AS ENUM ('release', 'release-group', 'new');
+EXCEPTION WHEN duplicate_object THEN NULL;
+END $$;
+
 CREATE TABLE IF NOT EXISTS manual_pairing (
 	cnb text PRIMARY KEY REFERENCES record (cnb) ON DELETE CASCADE,
-	entity text NOT NULL, -- release-group: a new release in that release group, new: not on MusicBrainz
+	entity manual_pairing_entity NOT NULL, -- release-group: a new release in that release group, new: not on MusicBrainz
 	gid uuid,
 	created_at timestamptz NOT NULL DEFAULT now(),
-	CONSTRAINT manual_pairing_entity_check CHECK (entity IN ('release', 'release-group', 'new') AND (gid IS NULL) = (entity = 'new'))
+	CONSTRAINT manual_pairing_gid_check CHECK ((gid IS NULL) = (entity = 'new'))
 );
 
 ALTER TABLE decision ADD COLUMN IF NOT EXISTS preview text; -- edits rendered by MusicBrainz in the preview mode
