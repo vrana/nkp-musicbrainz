@@ -48,6 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	$choices = array_filter((array) ($_POST['choice'] ?? []), fn($choice) => in_array($choice, ['ignore', 'process'], true));
 	$chosen = $review->proposals(array_map('strval', array_keys($choices))); // before re-pairing, which rebuilds the proposals of re-paired records
 	$repaired = [];
+	$paired = []; // records paired with something, not returned to the automatic pairing
 	$errors = [];
 	foreach ((array) ($_POST['pair'] ?? []) as $cnb => $url) {
 		$url = trim((string) $url);
@@ -62,6 +63,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 		try {
 			$store->pairManually((string) $cnb, $url === '' ? null : $url);
 			$repaired[] = (string) $cnb;
+			if ($url !== '') {
+				$paired[] = (string) $cnb;
+			}
 		} catch (InvalidArgumentException $e) {
 			$errors[] = "$cnb: " . $e->getMessage();
 		}
@@ -75,9 +79,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 				unset($choices[$key]);
 			}
 		}
-		foreach ($review->kinds(array_map('strval', array_keys($carried))) as $key => $proposal) {
-			if (isset($carried[$proposal['cnb']][$proposal['kind']])) {
-				$choices[$key] = $carried[$proposal['cnb']][$proposal['kind']];
+		foreach ($review->kinds($repaired) as $key => $proposal) {
+			$choice = $carried[$proposal['cnb']][$proposal['kind']]
+				?? ($proposal['kind'] === 'release' && in_array($proposal['cnb'], $paired, true) ? 'process' : null); // picking a new release creates it
+			if ($choice !== null) {
+				$choices[$key] = $choice;
 			}
 		}
 	}
