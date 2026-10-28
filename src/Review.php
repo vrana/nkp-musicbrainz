@@ -110,6 +110,26 @@ final class Review
 	}
 
 
+	/**
+	 * proposals of records, in the page order
+	 * @param list<string> $cnbs
+	 * @return array<string, array{cnb: string, kind: string}> by key
+	 */
+	public function kinds(array $cnbs): array
+	{
+		$statement = $this->app->db()->prepare("
+			SELECT key, cnb, kind FROM proposal WHERE cnb = ANY(CAST(:cnbs AS text[]))
+			ORDER BY cnb, array_position(ARRAY['barcode', 'event', 'label', 'catno', 'format', 'release'], kind), key
+		");
+		$statement->execute(['cnbs' => Importer::pgArray($cnbs)]);
+		$kinds = [];
+		foreach ($statement as $row) {
+			$kinds[$row['key']] = ['cnb' => $row['cnb'], 'kind' => $row['kind']];
+		}
+		return $kinds;
+	}
+
+
 	/** @return ?array<string, mixed> */
 	public function record(string $cnb): ?array
 	{

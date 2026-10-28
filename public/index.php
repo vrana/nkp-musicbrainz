@@ -45,6 +45,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	}
 	set_time_limit(0);
 
+	$choices = array_filter((array) ($_POST['choice'] ?? []), fn($choice) => in_array($choice, ['ignore', 'process'], true));
+	$chosen = $review->proposals(array_map('strval', array_keys($choices))); // before re-pairing, which rebuilds the proposals of re-paired records
 	$repaired = [];
 	$errors = [];
 	foreach ((array) ($_POST['pair'] ?? []) as $cnb => $url) {
@@ -66,11 +68,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	}
 	if ($repaired) {
 		(new Pairer($app))->pairRecords($repaired);
+		$carried = []; // choices of re-paired records go to their rebuilt proposals of the same kind
+		foreach ($chosen as $key => $proposal) {
+			if (in_array($proposal['cnb'], $repaired, true)) {
+				$carried[$proposal['cnb']][$proposal['kind']] = $choices[$key];
+				unset($choices[$key]);
+			}
+		}
+		foreach ($review->kinds(array_map('strval', array_keys($carried))) as $key => $proposal) {
+			if (isset($carried[$proposal['cnb']][$proposal['kind']])) {
+				$choices[$key] = $carried[$proposal['cnb']][$proposal['kind']];
+			}
+		}
 	}
 
-	// choices of re-paired records were made for their old proposals
-	$choices = array_filter((array) ($_POST['choice'] ?? []), fn($choice) => in_array($choice, ['ignore', 'process'], true));
-	$proposals = array_filter($review->proposals(array_map('strval', array_keys($choices))), fn($proposal) => !in_array($proposal['cnb'], $repaired, true));
+	$proposals = $review->proposals(array_map('strval', array_keys($choices)));
 	if (!$proposals) {
 		parse_str((string) ($_POST['return'] ?? ''), $return); // back to the same page of the list
 		$return['error'] = implode('; ', $errors) ?: null;
