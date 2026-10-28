@@ -66,7 +66,13 @@ final class Review
 		$total = (int) $statement->fetchColumn();
 
 		$perPage = (int) $this->app->config['records_per_page'];
-		$statement = $db->prepare("SELECT DISTINCT p.cnb $from ORDER BY p.cnb LIMIT $perPage OFFSET " . max(0, $page - 1) * $perPage);
+		$statement = $db->prepare("
+			SELECT cnb FROM (
+				SELECT DISTINCT p.cnb, coalesce(pa.data->'release_group'->>'gid', p.cnb) AS release_group
+				FROM proposal p LEFT JOIN decision d USING (key) JOIN record r ON r.cnb = p.cnb JOIN pairing pa ON pa.cnb = p.cnb WHERE $where
+			) records
+			ORDER BY min(cnb) OVER (PARTITION BY release_group), release_group, cnb -- records of one release group next to each other
+			LIMIT $perPage OFFSET " . max(0, $page - 1) * $perPage);
 		$statement->execute($parameters);
 		$cnbs = $statement->fetchAll(\PDO::FETCH_COLUMN);
 		if (!$cnbs) {
@@ -86,7 +92,7 @@ final class Review
 			$records[$cnb] ??= ['record' => self::decode($row['record']), 'pairing' => self::decode($row['pairing']), 'proposals' => []];
 			$records[$cnb]['proposals'][] = self::proposal($row);
 		}
-		return ['total' => $total, 'records' => array_values($records)];
+		return ['total' => $total, 'records' => array_values(array_replace(array_intersect_key(array_flip($cnbs), $records), $records))];
 	}
 
 
