@@ -71,7 +71,12 @@ $methods = [
 			</tr>
 		<?php } ?>
 	</table></div>
-	<p><a href="?">Back to the proposals</a></p>
+	<?php $retry = array_filter($batch, fn($decision) => $decision['retryable']); ?>
+	<form class="bar" method="post" action="">
+		<?php foreach ($retry as $decision) { ?><input type="hidden" name="choice[<?= $h($decision['key']) ?>]" value="process"><?php } ?>
+		<?php if ($retry) { ?><button type="submit">Retry <?= count($retry) ?> failed</button><?php } ?>
+		<a href="?">Back to the proposals</a>
+	</form>
 <?php } else { ?>
 	<form class="bar search" method="get" action="">
 		<?php foreach (array_diff_key($filters, ['q' => true]) as $name => $value) { ?><input type="hidden" name="<?= $h($name) ?>" value="<?= $h($value) ?>"><?php } ?>

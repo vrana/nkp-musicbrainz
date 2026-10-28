@@ -150,7 +150,8 @@ final class Review
 	public function batch(int $batch): array
 	{
 		$statement = $this->app->db()->prepare("
-			SELECT d.*, r.data->>'title' AS title, r.data->>'url' AS url FROM decision d LEFT JOIN record r USING (cnb) WHERE d.batch = ? ORDER BY d.decided_at
+			SELECT d.*, r.data->>'title' AS title, r.data->>'url' AS url, d.state = 'failed' AND p.key IS NOT NULL AND p.reason IS NULL AS retryable
+			FROM decision d LEFT JOIN record r USING (cnb) LEFT JOIN proposal p USING (key) WHERE d.batch = ? ORDER BY d.decided_at
 		");
 		$statement->execute([$batch]);
 		return $statement->fetchAll();
