@@ -103,9 +103,15 @@ final class Client
 			curl_setopt($this->curl, CURLOPT_HTTPGET, true);
 		}
 		curl_setopt($this->curl, CURLOPT_HTTPHEADER, $headers);
-		$body = curl_exec($this->curl);
-		$this->lastRequest = microtime(true);
-		$status = curl_getinfo($this->curl, CURLINFO_RESPONSE_CODE);
+		foreach ([5, 0] as $delay) { // HTTP 503 means MusicBrainz is busy and rejected the request without handling it
+			$body = curl_exec($this->curl);
+			$this->lastRequest = microtime(true);
+			$status = curl_getinfo($this->curl, CURLINFO_RESPONSE_CODE);
+			if ($status !== 503 || !$delay) {
+				break;
+			}
+			sleep($delay);
+		}
 		if (!is_string($body)) {
 			throw new RuntimeException("$method $path failed: " . curl_error($this->curl));
 		}
