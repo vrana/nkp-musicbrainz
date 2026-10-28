@@ -92,7 +92,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	if (!$proposals) {
 		parse_str((string) ($_POST['return'] ?? ''), $return); // back to the same page of the list
 		$return['error'] = implode('; ', $errors) ?: null;
-		header('Location: ?' . http_build_query($return) . ($repaired ? '#' . rawurlencode($repaired[0]) : ''), true, 303);
+		$return = http_build_query($return);
+		header('Location: ' . ($return === '' ? '.' : "?$return") . ($repaired ? '#' . rawurlencode($repaired[0]) : ''), true, 303);
 		exit;
 	}
 	$batch = $store->nextBatch();

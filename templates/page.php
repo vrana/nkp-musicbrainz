@@ -47,7 +47,7 @@ $methods = [
 <body>
 <main>
 <header class="bar">
-	<h1><a href="?">NKP → MusicBrainz</a></h1>
+	<h1><a href=".">NKP → MusicBrainz</a></h1>
 	<span class="muted"><?= $h($summary['open']) ?> open processable proposals · <?= $h($summary['ignored']) ?> ignored · <?= $h($summary['processed']) ?> processed</span>
 </header>
 <?php if ($preview) { ?>
@@ -75,7 +75,7 @@ $methods = [
 	<form class="bar" method="post" action="">
 		<?php foreach ($retry as $decision) { ?><input type="hidden" name="choice[<?= $h($decision['key']) ?>]" value="process"><?php } ?>
 		<?php if ($retry) { ?><button type="submit">Retry <?= count($retry) ?> failed</button><?php } ?>
-		<a href="?">Back to the proposals</a>
+		<a href=".">Back to the proposals</a>
 	</form>
 <?php } else { ?>
 	<form class="bar search" method="get" action="">
@@ -94,7 +94,7 @@ $methods = [
 		<?php } ?>
 	</nav>
 	<?php $pages = max(1, (int) ceil($list['total'] / $perPage)); ?>
-	<form method="post" action="?">
+	<form method="post" action=".">
 	<input type="hidden" name="return" value="<?= $h(http_build_query(array_merge($filters, ['page' => $page]))) ?>">
 	<?php foreach ($list['records'] as $item) {
 		$record = $item['record'];
